@@ -1,0 +1,2593 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>console 对象与控制台 - javascript-tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#console" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="javascript-tutorial" class="md-header__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            javascript-tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              console 对象与控制台
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="javascript-tutorial" class="md-nav__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    javascript-tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          入门篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="入门篇" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          入门篇
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/introduction/" class="md-nav__link">
+        导论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/history/" class="md-nav__link">
+        历史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/grammar/" class="md-nav__link">
+        基本语法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据类型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/null-undefined-boolean/" class="md-nav__link">
+        null，undefined 和布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/number/" class="md-nav__link">
+        数值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/object/" class="md-nav__link">
+        对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/function/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/array/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="运算符" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/arithmetic/" class="md-nav__link">
+        算术运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/comparison/" class="md-nav__link">
+        比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/boolean/" class="md-nav__link">
+        布尔运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/bit/" class="md-nav__link">
+        二进制位运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/priority/" class="md-nav__link">
+        其他运算符，运算顺序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          语法专题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法专题" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          语法专题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conversion/" class="md-nav__link">
+        数据类型的转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../error/" class="md-nav__link">
+        错误处理机制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../style/" class="md-nav__link">
+        编程风格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          console 对象与控制台
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        console 对象与控制台
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#console_1" class="md-nav__link">
+    console 对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#console_2" class="md-nav__link">
+    console 对象的静态方法
+  </a>
+  
+    <nav class="md-nav" aria-label="console 对象的静态方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolelogconsoleinfoconsoledebug" class="md-nav__link">
+    console.log()，console.info()，console.debug()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolewarnconsoleerror" class="md-nav__link">
+    console.warn()，console.error()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoletable" class="md-nav__link">
+    console.table()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolecount" class="md-nav__link">
+    console.count()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoledirconsoledirxml" class="md-nav__link">
+    console.dir()，console.dirxml()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoleassert" class="md-nav__link">
+    console.assert()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoletimeconsoletimeend" class="md-nav__link">
+    console.time()，console.timeEnd()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolegroupconsolegroupendconsolegroupcollapsed" class="md-nav__link">
+    console.group()，console.groupEnd()，console.groupCollapsed()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoletraceconsoleclear" class="md-nav__link">
+    console.trace()，console.clear()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    控制台命令行 API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugger" class="md-nav__link">
+    debugger 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          标准库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="标准库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          标准库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/object/" class="md-nav__link">
+        Object 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/attributes/" class="md-nav__link">
+        属性描述对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/array/" class="md-nav__link">
+        Array 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/wrapper/" class="md-nav__link">
+        包装对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/boolean/" class="md-nav__link">
+        Boolean 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/number/" class="md-nav__link">
+        Number 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/string/" class="md-nav__link">
+        String 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/math/" class="md-nav__link">
+        Math 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/date/" class="md-nav__link">
+        Date 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/regexp/" class="md-nav__link">
+        RegExp 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/json/" class="md-nav__link">
+        JSON 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          面向对象编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="面向对象编程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          面向对象编程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/new/" class="md-nav__link">
+        实例对象与 new 命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/this/" class="md-nav__link">
+        this 关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/prototype/" class="md-nav__link">
+        对象的继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/object/" class="md-nav__link">
+        Object 对象的相关方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/strict/" class="md-nav__link">
+        严格模式
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          异步操作
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="异步操作" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          异步操作
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/timer/" class="md-nav__link">
+        定时器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/promise/" class="md-nav__link">
+        Promise 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          DOM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DOM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          DOM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/node/" class="md-nav__link">
+        Node 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/nodelist/" class="md-nav__link">
+        NodeList 接口，HTMLCollection 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/parentnode/" class="md-nav__link">
+        ParentNode 接口，ChildNode 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/document/" class="md-nav__link">
+        Document 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/element/" class="md-nav__link">
+        Element 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/attributes/" class="md-nav__link">
+        属性的操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/text/" class="md-nav__link">
+        Text 节点和 DocumentFragment 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/css/" class="md-nav__link">
+        CSS 操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/mutationobserver/" class="md-nav__link">
+        Mutation Observer API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          事件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="事件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          事件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/eventtarget/" class="md-nav__link">
+        EventTarget 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/model/" class="md-nav__link">
+        事件模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/event/" class="md-nav__link">
+        Event 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/mouse/" class="md-nav__link">
+        鼠标事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/keyboard/" class="md-nav__link">
+        键盘事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/progress/" class="md-nav__link">
+        进度事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/form/" class="md-nav__link">
+        表单事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/touch/" class="md-nav__link">
+        触摸事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/drag/" class="md-nav__link">
+        拖拉事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/common/" class="md-nav__link">
+        其他常见事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/globaleventhandlers/" class="md-nav__link">
+        GlobalEventHandlers 接口
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          浏览器模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="浏览器模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          浏览器模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/engine/" class="md-nav__link">
+        浏览器模型概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/window/" class="md-nav__link">
+        window 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/navigator/" class="md-nav__link">
+        Navigator 对象，Screen 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cookie/" class="md-nav__link">
+        Cookie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/xmlhttprequest/" class="md-nav__link">
+        XMLHttpRequest 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/same-origin/" class="md-nav__link">
+        同源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cors/" class="md-nav__link">
+        CORS 通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/storage/" class="md-nav__link">
+        Storage 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/history/" class="md-nav__link">
+        History 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/location/" class="md-nav__link">
+        Location 对象，URL 对象，URLSearchParams 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/arraybuffer/" class="md-nav__link">
+        ArrayBuffer 对象，Blob 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/file/" class="md-nav__link">
+        File 对象，FileList 对象，FileReader 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/form/" class="md-nav__link">
+        表单，FormData 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/indexeddb/" class="md-nav__link">
+        IndexedDB API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/webworker/" class="md-nav__link">
+        Web Worker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          附录网页元素接口
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="附录网页元素接口" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          附录网页元素接口
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/a/" class="md-nav__link">
+        a
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/image/" class="md-nav__link">
+        img
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/form/" class="md-nav__link">
+        form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/input/" class="md-nav__link">
+        input
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/button/" class="md-nav__link">
+        button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/option/" class="md-nav__link">
+        option
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/video/" class="md-nav__link">
+        video & audio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#console_1" class="md-nav__link">
+    console 对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#console_2" class="md-nav__link">
+    console 对象的静态方法
+  </a>
+  
+    <nav class="md-nav" aria-label="console 对象的静态方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolelogconsoleinfoconsoledebug" class="md-nav__link">
+    console.log()，console.info()，console.debug()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolewarnconsoleerror" class="md-nav__link">
+    console.warn()，console.error()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoletable" class="md-nav__link">
+    console.table()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolecount" class="md-nav__link">
+    console.count()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoledirconsoledirxml" class="md-nav__link">
+    console.dir()，console.dirxml()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoleassert" class="md-nav__link">
+    console.assert()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoletimeconsoletimeend" class="md-nav__link">
+    console.time()，console.timeEnd()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolegroupconsolegroupendconsolegroupcollapsed" class="md-nav__link">
+    console.group()，console.groupEnd()，console.groupCollapsed()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoletraceconsoleclear" class="md-nav__link">
+    console.trace()，console.clear()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    控制台命令行 API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugger" class="md-nav__link">
+    debugger 语句
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="console">console 对象与控制台<a class="headerlink" href="#console" title="Permanent link">&para;</a></h1>
+<h2 id="console_1">console 对象<a class="headerlink" href="#console_1" title="Permanent link">&para;</a></h2>
+<p><code>console</code>对象是 JavaScript 的原生对象，它有点像 Unix 系统的标准输出<code>stdout</code>和标准错误<code>stderr</code>，可以输出各种信息到控制台，并且还提供了很多有用的辅助方法。</p>
+<p><code>console</code>的常见用途有两个。</p>
+<ul>
+<li>调试程序，显示网页代码运行时的错误信息。</li>
+<li>提供了一个命令行接口，用来与网页代码互动。</li>
+</ul>
+<p><code>console</code>对象的浏览器实现，包含在浏览器自带的开发工具之中。以 Chrome 浏览器的“开发者工具”（Developer Tools）为例，可以使用下面三种方法的打开它。</p>
+<ol>
+<li>按 F12 或者<code>Control + Shift + i</code>（PC）/ <code>Command + Option + i</code>（Mac）。</li>
+<li>浏览器菜单选择“工具/开发者工具”。</li>
+<li>在一个页面元素上，打开右键菜单，选择其中的“Inspect Element”。</li>
+</ol>
+<p>打开开发者工具以后，顶端有多个面板。</p>
+<ul>
+<li><strong>Elements</strong>：查看网页的 HTML 源码和 CSS 代码。</li>
+<li><strong>Resources</strong>：查看网页加载的各种资源文件（比如代码文件、字体文件 CSS 文件等），以及在硬盘上创建的各种内容（比如本地缓存、Cookie、Local Storage等）。</li>
+<li><strong>Network</strong>：查看网页的 HTTP 通信情况。</li>
+<li><strong>Sources</strong>：查看网页加载的脚本源码。</li>
+<li><strong>Timeline</strong>：查看各种网页行为随时间变化的情况。</li>
+<li><strong>Performance</strong>：查看网页的性能情况，比如 CPU 和内存消耗。</li>
+<li><strong>Console</strong>：用来运行 JavaScript 命令。</li>
+</ul>
+<p>这些面板都有各自的用途，以下只介绍<code>Console</code>面板（又称为控制台）。</p>
+<p><code>Console</code>面板基本上就是一个命令行窗口，你可以在提示符下，键入各种命令。</p>
+<h2 id="console_2">console 对象的静态方法<a class="headerlink" href="#console_2" title="Permanent link">&para;</a></h2>
+<p><code>console</code>对象提供的各种静态方法，用来与控制台窗口互动。</p>
+<h3 id="consolelogconsoleinfoconsoledebug">console.log()，console.info()，console.debug()<a class="headerlink" href="#consolelogconsoleinfoconsoledebug" title="Permanent link">&para;</a></h3>
+<p><code>console.log</code>方法用于在控制台输出信息。它可以接受一个或多个参数，将它们连接起来输出。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+<span class="c1">// Hello World</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="c1">// a b c</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>console.log</code>方法会自动在每次输出的结尾，添加换行符。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果第一个参数是格式字符串（使用了格式占位符），<code>console.log</code>方法将依次用后面的参数替换占位符，然后再进行输出。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39; %s + %s = %s&#39;</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">)</span>
+<span class="c1">//  1 + 1 = 2</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>console.log</code>方法的第一个参数有三个占位符（<code>%s</code>），第二、三、四个参数会在显示时，依次替换掉这个三个占位符。</p>
+<p><code>console.log</code>方法支持以下占位符，不同类型的数据必须使用对应的占位符。</p>
+<ul>
+<li><code>%s</code> 字符串</li>
+<li><code>%d</code> 整数</li>
+<li><code>%i</code> 整数</li>
+<li><code>%f</code> 浮点数</li>
+<li><code>%o</code> 对象的链接</li>
+<li><code>%c</code> CSS 格式字符串</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="mf">11</span> <span class="o">*</span> <span class="mf">9</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;%d %s balloons&#39;</span><span class="p">,</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+<span class="c1">// 99 red balloons</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，第二个参数是数值，对应的占位符是<code>%d</code>，第三个参数是字符串，对应的占位符是<code>%s</code>。</p>
+<p>使用<code>%c</code>占位符时，对应的参数必须是 CSS 代码，用来对输出内容进行 CSS 渲染。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+  <span class="s1">&#39;%cThis text is styled!&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;color: red; background: yellow; font-size: 24px;&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码运行后，输出的内容将显示为黄底红字。</p>
+<p><code>console.log</code>方法的两种参数格式，可以结合在一起使用。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39; %s + %s &#39;</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="s1">&#39;= 2&#39;</span><span class="p">)</span>
+<span class="c1">// 1 + 1  = 2</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果参数是一个对象，<code>console.log</code>会显示该对象的值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+<span class="c1">// Object {foo: &quot;bar&quot;}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Date</span><span class="p">)</span>
+<span class="c1">// function Date() { [native code] }</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码输出<code>Date</code>对象的值，结果为一个构造函数。</p>
+<p><code>console.info</code>是<code>console.log</code>方法的别名，用法完全一样。只不过<code>console.info</code>方法会在输出信息的前面，加上一个蓝色图标。</p>
+<p><code>console.debug</code>方法与<code>console.log</code>方法类似，会在控制台输出调试信息。但是，默认情况下，<code>console.debug</code>输出的信息不会显示，只有在打开显示级别在<code>verbose</code>的情况下，才会显示。</p>
+<p><code>console</code>对象的所有方法，都可以被覆盖。因此，可以按照自己的需要，定义<code>console.log</code>方法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">].</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">method</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">[</span><span class="nx">method</span><span class="p">]</span> <span class="o">=</span> <span class="nx">console</span><span class="p">[</span><span class="nx">method</span><span class="p">].</span><span class="nx">bind</span><span class="p">(</span>
+    <span class="nx">console</span><span class="p">,</span>
+    <span class="ow">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">()</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;出错了！&quot;</span><span class="p">);</span>
+<span class="c1">// 2014-05-18T09:00.000Z 出错了！</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码表示，使用自定义的<code>console.log</code>方法，可以在显示结果添加当前时间。</p>
+<h3 id="consolewarnconsoleerror">console.warn()，console.error()<a class="headerlink" href="#consolewarnconsoleerror" title="Permanent link">&para;</a></h3>
+<p><code>warn</code>方法和<code>error</code>方法也是在控制台输出信息，它们与<code>log</code>方法的不同之处在于，<code>warn</code>方法输出信息时，在最前面加一个黄色三角，表示警告；<code>error</code>方法输出信息时，在最前面加一个红色的叉，表示出错。同时，还会高亮显示输出文字和错误发生的堆栈。其他方面都一样。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error: %s (%i)&#39;</span><span class="p">,</span> <span class="s1">&#39;Server is not responding&#39;</span><span class="p">,</span> <span class="mf">500</span><span class="p">)</span>
+<span class="c1">// Error: Server is not responding (500)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;Warning! Too few nodes (%d)&#39;</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span>
+<span class="c1">// Warning! Too few nodes (1)</span>
+</code></pre></div>
+</td></tr></table>
+<p>可以这样理解，<code>log</code>方法是写入标准输出（<code>stdout</code>），<code>warn</code>方法和<code>error</code>方法是写入标准错误（<code>stderr</code>）。</p>
+<h3 id="consoletable">console.table()<a class="headerlink" href="#consoletable" title="Permanent link">&para;</a></h3>
+<p>对于某些复合类型的数据，<code>console.table</code>方法可以将其转为表格显示。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">languages</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;JavaScript&quot;</span><span class="p">,</span> <span class="nx">fileExtension</span><span class="o">:</span> <span class="s2">&quot;.js&quot;</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;TypeScript&quot;</span><span class="p">,</span> <span class="nx">fileExtension</span><span class="o">:</span> <span class="s2">&quot;.ts&quot;</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;CoffeeScript&quot;</span><span class="p">,</span> <span class="nx">fileExtension</span><span class="o">:</span> <span class="s2">&quot;.coffee&quot;</span> <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">languages</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码的<code>language</code>变量，转为表格显示如下。</p>
+<table>
+<thead>
+<tr>
+<th>(index)</th>
+<th>name</th>
+<th>fileExtension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>"JavaScript"</td>
+<td>".js"</td>
+</tr>
+<tr>
+<td>1</td>
+<td>"TypeScript"</td>
+<td>".ts"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>"CoffeeScript"</td>
+<td>".coffee"</td>
+</tr>
+</tbody>
+</table>
+<p>下面是显示表格内容的例子。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">languages</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">csharp</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;C#&quot;</span><span class="p">,</span> <span class="nx">paradigm</span><span class="o">:</span> <span class="s2">&quot;object-oriented&quot;</span> <span class="p">},</span>
+  <span class="nx">fsharp</span><span class="o">:</span> <span class="p">{</span> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;F#&quot;</span><span class="p">,</span> <span class="nx">paradigm</span><span class="o">:</span> <span class="s2">&quot;functional&quot;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">table</span><span class="p">(</span><span class="nx">languages</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码的<code>language</code>，转为表格显示如下。</p>
+<table>
+<thead>
+<tr>
+<th>(index)</th>
+<th>name</th>
+<th>paradigm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>csharp</td>
+<td>"C#"</td>
+<td>"object-oriented"</td>
+</tr>
+<tr>
+<td>fsharp</td>
+<td>"F#"</td>
+<td>"functional"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="consolecount">console.count()<a class="headerlink" href="#consolecount" title="Permanent link">&para;</a></h3>
+<p><code>count</code>方法用于计数，输出它被调用了多少次。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">count</span><span class="p">();</span>
+  <span class="k">return</span> <span class="s1">&#39;hi &#39;</span> <span class="o">+</span> <span class="nx">user</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">)</span>
+<span class="c1">//  : 1</span>
+<span class="c1">// &quot;hi bob&quot;</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;alice&#39;</span><span class="p">)</span>
+<span class="c1">//  : 2</span>
+<span class="c1">// &quot;hi alice&quot;</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">)</span>
+<span class="c1">//  : 3</span>
+<span class="c1">// &quot;hi bob&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码每次调用<code>greet</code>函数，内部的<code>console.count</code>方法就输出执行次数。</p>
+<p>该方法可以接受一个字符串作为参数，作为标签，对执行次数进行分类。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">count</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+  <span class="k">return</span> <span class="s2">&quot;hi &quot;</span> <span class="o">+</span> <span class="nx">user</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">)</span>
+<span class="c1">// bob: 1</span>
+<span class="c1">// &quot;hi bob&quot;</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;alice&#39;</span><span class="p">)</span>
+<span class="c1">// alice: 1</span>
+<span class="c1">// &quot;hi alice&quot;</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;bob&#39;</span><span class="p">)</span>
+<span class="c1">// bob: 2</span>
+<span class="c1">// &quot;hi bob&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码根据参数的不同，显示<code>bob</code>执行了两次，<code>alice</code>执行了一次。</p>
+<h3 id="consoledirconsoledirxml">console.dir()，console.dirxml()<a class="headerlink" href="#consoledirconsoledirxml" title="Permanent link">&para;</a></h3>
+<p><code>dir</code>方法用来对一个对象进行检查（inspect），并以易于阅读和打印的格式显示。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">({</span><span class="nx">f1</span><span class="o">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="nx">f2</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+<span class="c1">// Object {f1: &quot;foo&quot;, f2: &quot;bar&quot;}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">({</span><span class="nx">f1</span><span class="o">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="nx">f2</span><span class="o">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+<span class="c1">// Object</span>
+<span class="c1">//   f1: &quot;foo&quot;</span>
+<span class="c1">//   f2: &quot;bar&quot;</span>
+<span class="c1">//   __proto__: Object</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码显示<code>dir</code>方法的输出结果，比<code>log</code>方法更易读，信息也更丰富。</p>
+<p>该方法对于输出 DOM 对象非常有用，因为会显示 DOM 对象的所有属性。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Node 环境之中，还可以指定以代码高亮的形式输出。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">{</span><span class="nx">colors</span><span class="o">:</span> <span class="kc">true</span><span class="p">})</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>dirxml</code>方法主要用于以目录树的形式，显示 DOM 节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">dirxml</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果参数不是 DOM 节点，而是普通的 JavaScript 对象，<code>console.dirxml</code>等同于<code>console.dir</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">dirxml</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">])</span>
+<span class="c1">// 等同于</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="consoleassert">console.assert()<a class="headerlink" href="#consoleassert" title="Permanent link">&para;</a></h3>
+<p><code>console.assert</code>方法主要用于程序运行过程中，进行条件判断，如果不满足条件，就显示一个错误，但不会中断程序执行。这样就相当于提示用户，内部状态不正确。</p>
+<p>它接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为<code>false</code>，才会提示有错误，在控制台输出第二个参数，否则不会有任何结果。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="s1">&#39;判断条件不成立&#39;</span><span class="p">)</span>
+<span class="c1">// Assertion failed: 判断条件不成立</span>
+
+<span class="c1">// 相当于</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="ow">new</span> <span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;判断条件不成立&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>下面是一个例子，判断子节点的个数是否大于等于500。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">list</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="mf">500</span><span class="p">,</span> <span class="s1">&#39;节点个数大于等于500&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，如果符合条件的节点小于500个，不会有任何输出；只有大于等于500时，才会在控制台提示错误，并且显示指定文本。</p>
+<h3 id="consoletimeconsoletimeend">console.time()，console.timeEnd()<a class="headerlink" href="#consoletimeconsoletimeend" title="Permanent link">&para;</a></h3>
+<p>这两个方法用于计时，可以算出一个操作所花费的准确时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;Array initialize&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">array</span><span class="o">=</span> <span class="ow">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mf">1000000</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mf">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">&#39;Array initialize&#39;</span><span class="p">);</span>
+<span class="c1">// Array initialize: 1914.481ms</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>time</code>方法表示计时开始，<code>timeEnd</code>方法表示计时结束。它们的参数是计时器的名称。调用<code>timeEnd</code>方法之后，控制台会显示“计时器名称: 所耗费的时间”。</p>
+<h3 id="consolegroupconsolegroupendconsolegroupcollapsed">console.group()，console.groupEnd()，console.groupCollapsed()<a class="headerlink" href="#consolegroupconsolegroupendconsolegroupcollapsed" title="Permanent link">&para;</a></h3>
+<p><code>console.group</code>和<code>console.groupEnd</code>这两个方法用于将显示的信息分组。它只在输出大量信息时有用，分在一组的信息，可以用鼠标折叠/展开。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="s1">&#39;一级分组&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;一级分组的内容&#39;</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">group</span><span class="p">(</span><span class="s1">&#39;二级分组&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;二级分组的内容&#39;</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">groupEnd</span><span class="p">();</span> <span class="c1">// 二级分组结束</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">groupEnd</span><span class="p">();</span> <span class="c1">// 一级分组结束</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码会将“二级分组”显示在“一级分组”内部，并且“一级分组”和“二级分组”前面都有一个折叠符号，可以用来折叠本级的内容。</p>
+<p><code>console.groupCollapsed</code>方法与<code>console.group</code>方法很类似，唯一的区别是该组的内容，在第一次显示时是收起的（collapsed），而不是展开的。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">groupCollapsed</span><span class="p">(</span><span class="s1">&#39;Fetching Data&#39;</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request Sent&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error: Server not responding (500)&#39;</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">groupEnd</span><span class="p">();</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码只显示一行”Fetching Data“，点击后才会展开，显示其中包含的两行。</p>
+<h3 id="consoletraceconsoleclear">console.trace()，console.clear()<a class="headerlink" href="#consoletraceconsoleclear" title="Permanent link">&para;</a></h3>
+<p><code>console.trace</code>方法显示当前执行的代码在堆栈中的调用路径。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">trace</span><span class="p">()</span>
+<span class="c1">// console.trace()</span>
+<span class="c1">//   (anonymous function)</span>
+<span class="c1">//   InjectedScript._evaluateOn</span>
+<span class="c1">//   InjectedScript._evaluateAndWrap</span>
+<span class="c1">//   InjectedScript.evaluate</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>console.clear</code>方法用于清除当前控制台的所有输出，将光标回置到第一行。如果用户选中了控制台的“Preserve log”选项，<code>console.clear</code>方法将不起作用。</p>
+<h2 id="api">控制台命令行 API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>浏览器控制台中，除了使用<code>console</code>对象，还可以使用一些控制台自带的命令行方法。</p>
+<p>（1）<code>$_</code></p>
+<p><code>$_</code>属性返回上一个表达式的值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mf">2</span> <span class="o">+</span> <span class="mf">2</span>
+<span class="c1">// 4</span>
+<span class="nx">$_</span>
+<span class="c1">// 4</span>
+</code></pre></div>
+</td></tr></table>
+<p>（2）<code>$0</code> - <code>$4</code></p>
+<p>控制台保存了最近5个在 Elements 面板选中的 DOM 元素，<code>$0</code>代表倒数第一个（最近一个），<code>$1</code>代表倒数第二个，以此类推直到<code>$4</code>。</p>
+<p>（3）<code>$(selector)</code></p>
+<p><code>$(selector)</code>返回第一个匹配的元素，等同于<code>document.querySelector()</code>。注意，如果页面脚本对<code>$</code>有定义，则会覆盖原始的定义。比如，页面里面有 jQuery，控制台执行<code>$(selector)</code>就会采用 jQuery 的实现，返回一个数组。</p>
+<p>（4）<code>$$(selector)</code></p>
+<p><code>$$(selector)</code>返回选中的 DOM 对象，等同于<code>document.querySelectorAll</code>。</p>
+<p>（5）<code>$x(path)</code></p>
+<p><code>$x(path)</code>方法返回一个数组，包含匹配特定 XPath 表达式的所有 DOM 元素。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">$x</span><span class="p">(</span><span class="s2">&quot;//p[a]&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码返回所有包含<code>a</code>元素的<code>p</code>元素。</p>
+<p>（6）<code>inspect(object)</code></p>
+<p><code>inspect(object)</code>方法打开相关面板，并选中相应的元素，显示它的细节。DOM 元素在<code>Elements</code>面板中显示，比如<code>inspect(document)</code>会在 Elements 面板显示<code>document</code>元素。JavaScript 对象在控制台面板<code>Profiles</code>面板中显示，比如<code>inspect(window)</code>。</p>
+<p>（7）<code>getEventListeners(object)</code></p>
+<p><code>getEventListeners(object)</code>方法返回一个对象，该对象的成员为<code>object</code>登记了回调函数的各种事件（比如<code>click</code>或<code>keydown</code>），每个事件对应一个数组，数组的成员为该事件的回调函数。</p>
+<p>（8）<code>keys(object)</code>，<code>values(object)</code></p>
+<p><code>keys(object)</code>方法返回一个数组，包含<code>object</code>的所有键名。</p>
+<p><code>values(object)</code>方法返回一个数组，包含<code>object</code>的所有键值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;p1&#39;</span><span class="o">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;p2&#39;</span><span class="o">:</span> <span class="s1">&#39;b&#39;</span><span class="p">};</span>
+
+<span class="nx">keys</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span>
+<span class="c1">// [&quot;p1&quot;, &quot;p2&quot;]</span>
+<span class="nx">values</span><span class="p">(</span><span class="nx">o</span><span class="p">)</span>
+<span class="c1">// [&quot;a&quot;, &quot;b&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>（9）<code>monitorEvents(object[, events]) ，unmonitorEvents(object[, events])</code></p>
+<p><code>monitorEvents(object[, events])</code>方法监听特定对象上发生的特定事件。事件发生时，会返回一个<code>Event</code>对象，包含该事件的相关信息。<code>unmonitorEvents</code>方法用于停止监听。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">monitorEvents</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="s2">&quot;resize&quot;</span><span class="p">);</span>
+<span class="nx">monitorEvents</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;resize&quot;</span><span class="p">,</span> <span class="s2">&quot;scroll&quot;</span><span class="p">])</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码分别表示单个事件和多个事件的监听方法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">monitorEvents</span><span class="p">(</span><span class="nx">$0</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">);</span>
+<span class="nx">unmonitorEvents</span><span class="p">(</span><span class="nx">$0</span><span class="p">,</span> <span class="s1">&#39;mousemove&#39;</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码表示如何停止监听。</p>
+<p><code>monitorEvents</code>允许监听同一大类的事件。所有事件可以分成四个大类。</p>
+<ul>
+<li>mouse："mousedown", "mouseup", "click", "dblclick", "mousemove", "mouseover", "mouseout", "mousewheel"</li>
+<li>key："keydown", "keyup", "keypress", "textInput"</li>
+<li>touch："touchstart", "touchmove", "touchend", "touchcancel"</li>
+<li>control："resize", "scroll", "zoom", "focus", "blur", "select", "change", "submit", "reset"</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">monitorEvents</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#msg&quot;</span><span class="p">),</span> <span class="s2">&quot;key&quot;</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码表示监听所有<code>key</code>大类的事件。</p>
+<p>（10）其他方法</p>
+<p>命令行 API 还提供以下方法。</p>
+<ul>
+<li><code>clear()</code>：清除控制台的历史。</li>
+<li><code>copy(object)</code>：复制特定 DOM 元素到剪贴板。</li>
+<li><code>dir(object)</code>：显示特定对象的所有属性，是<code>console.dir</code>方法的别名。</li>
+<li><code>dirxml(object)</code>：显示特定对象的 XML 形式，是<code>console.dirxml</code>方法的别名。</li>
+</ul>
+<h2 id="debugger">debugger 语句<a class="headerlink" href="#debugger" title="Permanent link">&para;</a></h2>
+<p><code>debugger</code>语句主要用于除错，作用是设置断点。如果有正在运行的除错工具，程序运行到<code>debugger</code>语句时会自动停下。如果没有除错工具，<code>debugger</code>语句不会产生任何结果，JavaScript 引擎自动跳过这一句。</p>
+<p>Chrome 浏览器中，当代码运行到<code>debugger</code>语句时，就会暂停运行，自动打开脚本源码界面。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mf">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mf">2</span><span class="p">)</span> <span class="k">debugger</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码打印出0，1，2以后，就会暂停，自动打开源码界面，等待进一步处理。</p>
+<h2 id="_1">参考链接<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Chrome Developer Tools, <a href="https://developers.google.com/chrome-developer-tools/docs/console">Using the Console</a></li>
+<li>Matt West, <a href="http://blog.teamtreehouse.com/mastering-developer-tools-console">Mastering The Developer Tools Console</a></li>
+<li>Firebug Wiki, <a href="https://getfirebug.com/wiki/index.php/Console_API">Console API</a></li>
+<li>Axel Rauschmayer, <a href="http://www.2ality.com/2013/10/console-api.html">The JavaScript console API</a></li>
+<li>Marius Schulz, <a href="http://blog.mariusschulz.com/2013/11/13/advanced-javascript-debugging-with-consoletable">Advanced JavaScript Debugging with console.table()</a></li>
+<li>Google Developer, <a href="https://developers.google.com/chrome-developer-tools/docs/commandline-api">Command Line API Reference</a></li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../style/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 编程风格" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              编程风格
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../stdlib/object/" class="md-footer__link md-footer__link--next" aria-label="Next: Object 对象" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Object 对象
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

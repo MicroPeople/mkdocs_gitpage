@@ -1,0 +1,2508 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>String 对象 - javascript-tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#string" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="javascript-tutorial" class="md-header__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            javascript-tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              String 对象
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="javascript-tutorial" class="md-nav__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    javascript-tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          入门篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="入门篇" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          入门篇
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/introduction/" class="md-nav__link">
+        导论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/history/" class="md-nav__link">
+        历史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/grammar/" class="md-nav__link">
+        基本语法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据类型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/null-undefined-boolean/" class="md-nav__link">
+        null，undefined 和布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/number/" class="md-nav__link">
+        数值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/object/" class="md-nav__link">
+        对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/function/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/array/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="运算符" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/arithmetic/" class="md-nav__link">
+        算术运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/comparison/" class="md-nav__link">
+        比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/boolean/" class="md-nav__link">
+        布尔运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/bit/" class="md-nav__link">
+        二进制位运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/priority/" class="md-nav__link">
+        其他运算符，运算顺序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          语法专题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法专题" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          语法专题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/conversion/" class="md-nav__link">
+        数据类型的转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/error/" class="md-nav__link">
+        错误处理机制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/style/" class="md-nav__link">
+        编程风格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/console/" class="md-nav__link">
+        console 对象与控制台
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          标准库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="标准库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          标准库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object/" class="md-nav__link">
+        Object 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attributes/" class="md-nav__link">
+        属性描述对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../array/" class="md-nav__link">
+        Array 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wrapper/" class="md-nav__link">
+        包装对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boolean/" class="md-nav__link">
+        Boolean 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../number/" class="md-nav__link">
+        Number 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          String 对象
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        String 对象
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    静态方法
+  </a>
+  
+    <nav class="md-nav" aria-label="静态方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringfromcharcode" class="md-nav__link">
+    String.fromCharCode()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    实例属性
+  </a>
+  
+    <nav class="md-nav" aria-label="实例属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypelength" class="md-nav__link">
+    String.prototype.length
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    实例方法
+  </a>
+  
+    <nav class="md-nav" aria-label="实例方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypecharat" class="md-nav__link">
+    String.prototype.charAt()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypecharcodeat" class="md-nav__link">
+    String.prototype.charCodeAt()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypeconcat" class="md-nav__link">
+    String.prototype.concat()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypeslice" class="md-nav__link">
+    String.prototype.slice()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesubstring" class="md-nav__link">
+    String.prototype.substring()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesubstr" class="md-nav__link">
+    String.prototype.substr()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypeindexofstringprototypelastindexof" class="md-nav__link">
+    String.prototype.indexOf()，String.prototype.lastIndexOf()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypetrim" class="md-nav__link">
+    String.prototype.trim()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypetolowercasestringprototypetouppercase" class="md-nav__link">
+    String.prototype.toLowerCase()，String.prototype.toUpperCase()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypematch" class="md-nav__link">
+    String.prototype.match()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesearchstringprototypereplace" class="md-nav__link">
+    String.prototype.search()，String.prototype.replace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesplit" class="md-nav__link">
+    String.prototype.split()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypelocalecompare" class="md-nav__link">
+    String.prototype.localeCompare()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math/" class="md-nav__link">
+        Math 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../date/" class="md-nav__link">
+        Date 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regexp/" class="md-nav__link">
+        RegExp 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json/" class="md-nav__link">
+        JSON 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          面向对象编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="面向对象编程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          面向对象编程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/new/" class="md-nav__link">
+        实例对象与 new 命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/this/" class="md-nav__link">
+        this 关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/prototype/" class="md-nav__link">
+        对象的继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/object/" class="md-nav__link">
+        Object 对象的相关方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/strict/" class="md-nav__link">
+        严格模式
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          异步操作
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="异步操作" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          异步操作
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/timer/" class="md-nav__link">
+        定时器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/promise/" class="md-nav__link">
+        Promise 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          DOM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DOM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          DOM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/node/" class="md-nav__link">
+        Node 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/nodelist/" class="md-nav__link">
+        NodeList 接口，HTMLCollection 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/parentnode/" class="md-nav__link">
+        ParentNode 接口，ChildNode 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/document/" class="md-nav__link">
+        Document 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/element/" class="md-nav__link">
+        Element 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/attributes/" class="md-nav__link">
+        属性的操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/text/" class="md-nav__link">
+        Text 节点和 DocumentFragment 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/css/" class="md-nav__link">
+        CSS 操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/mutationobserver/" class="md-nav__link">
+        Mutation Observer API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          事件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="事件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          事件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/eventtarget/" class="md-nav__link">
+        EventTarget 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/model/" class="md-nav__link">
+        事件模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/event/" class="md-nav__link">
+        Event 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/mouse/" class="md-nav__link">
+        鼠标事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/keyboard/" class="md-nav__link">
+        键盘事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/progress/" class="md-nav__link">
+        进度事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/form/" class="md-nav__link">
+        表单事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/touch/" class="md-nav__link">
+        触摸事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/drag/" class="md-nav__link">
+        拖拉事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/common/" class="md-nav__link">
+        其他常见事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/globaleventhandlers/" class="md-nav__link">
+        GlobalEventHandlers 接口
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          浏览器模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="浏览器模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          浏览器模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/engine/" class="md-nav__link">
+        浏览器模型概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/window/" class="md-nav__link">
+        window 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/navigator/" class="md-nav__link">
+        Navigator 对象，Screen 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cookie/" class="md-nav__link">
+        Cookie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/xmlhttprequest/" class="md-nav__link">
+        XMLHttpRequest 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/same-origin/" class="md-nav__link">
+        同源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cors/" class="md-nav__link">
+        CORS 通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/storage/" class="md-nav__link">
+        Storage 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/history/" class="md-nav__link">
+        History 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/location/" class="md-nav__link">
+        Location 对象，URL 对象，URLSearchParams 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/arraybuffer/" class="md-nav__link">
+        ArrayBuffer 对象，Blob 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/file/" class="md-nav__link">
+        File 对象，FileList 对象，FileReader 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/form/" class="md-nav__link">
+        表单，FormData 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/indexeddb/" class="md-nav__link">
+        IndexedDB API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/webworker/" class="md-nav__link">
+        Web Worker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          附录网页元素接口
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="附录网页元素接口" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          附录网页元素接口
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/a/" class="md-nav__link">
+        a
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/image/" class="md-nav__link">
+        img
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/form/" class="md-nav__link">
+        form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/input/" class="md-nav__link">
+        input
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/button/" class="md-nav__link">
+        button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/option/" class="md-nav__link">
+        option
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/video/" class="md-nav__link">
+        video & audio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    静态方法
+  </a>
+  
+    <nav class="md-nav" aria-label="静态方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringfromcharcode" class="md-nav__link">
+    String.fromCharCode()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    实例属性
+  </a>
+  
+    <nav class="md-nav" aria-label="实例属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypelength" class="md-nav__link">
+    String.prototype.length
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    实例方法
+  </a>
+  
+    <nav class="md-nav" aria-label="实例方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypecharat" class="md-nav__link">
+    String.prototype.charAt()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypecharcodeat" class="md-nav__link">
+    String.prototype.charCodeAt()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypeconcat" class="md-nav__link">
+    String.prototype.concat()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypeslice" class="md-nav__link">
+    String.prototype.slice()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesubstring" class="md-nav__link">
+    String.prototype.substring()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesubstr" class="md-nav__link">
+    String.prototype.substr()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypeindexofstringprototypelastindexof" class="md-nav__link">
+    String.prototype.indexOf()，String.prototype.lastIndexOf()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypetrim" class="md-nav__link">
+    String.prototype.trim()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypetolowercasestringprototypetouppercase" class="md-nav__link">
+    String.prototype.toLowerCase()，String.prototype.toUpperCase()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypematch" class="md-nav__link">
+    String.prototype.match()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesearchstringprototypereplace" class="md-nav__link">
+    String.prototype.search()，String.prototype.replace()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypesplit" class="md-nav__link">
+    String.prototype.split()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringprototypelocalecompare" class="md-nav__link">
+    String.prototype.localeCompare()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="string">String 对象<a class="headerlink" href="#string" title="Permanent link">&para;</a></h1>
+<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><code>String</code>对象是 JavaScript 原生提供的三个包装对象之一，用来生成字符串对象。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">s1</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">s2</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">);</span>
+
+<span class="ow">typeof</span> <span class="nx">s1</span> <span class="c1">// &quot;string&quot;</span>
+<span class="ow">typeof</span> <span class="nx">s2</span> <span class="c1">// &quot;object&quot;</span>
+
+<span class="nx">s2</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">()</span> <span class="c1">// &quot;abc&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，变量<code>s1</code>是字符串，<code>s2</code>是对象。由于<code>s2</code>是字符串对象，<code>s2.valueOf</code>方法返回的就是它所对应的原始字符串。</p>
+<p>字符串对象是一个类似数组的对象（很像数组，但不是数组）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+<span class="c1">// String {0: &quot;a&quot;, 1: &quot;b&quot;, 2: &quot;c&quot;, length: 3}</span>
+
+<span class="p">(</span><span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">))[</span><span class="mf">1</span><span class="p">]</span> <span class="c1">// &quot;b&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，字符串<code>abc</code>对应的字符串对象，有数值键（<code>0</code>、<code>1</code>、<code>2</code>）和<code>length</code>属性，所以可以像数组那样取值。</p>
+<p>除了用作构造函数，<code>String</code>对象还可以当作工具方法使用，将任意类型的值转为字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">String</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// &quot;true&quot;</span>
+<span class="nb">String</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span> <span class="c1">// &quot;5&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码将布尔值<code>true</code>和数值<code>5</code>，分别转换为字符串。</p>
+<h2 id="_2">静态方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="stringfromcharcode">String.fromCharCode()<a class="headerlink" href="#stringfromcharcode" title="Permanent link">&para;</a></h3>
+<p><code>String</code>对象提供的静态方法（即定义在对象本身，而不是定义在对象实例的方法），主要是<code>String.fromCharCode()</code>。该方法的参数是一个或多个数值，代表 Unicode 码点，返回值是这些码点组成的字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">()</span> <span class="c1">// &quot;&quot;</span>
+<span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="mf">97</span><span class="p">)</span> <span class="c1">// &quot;a&quot;</span>
+<span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="mf">104</span><span class="p">,</span> <span class="mf">101</span><span class="p">,</span> <span class="mf">108</span><span class="p">,</span> <span class="mf">108</span><span class="p">,</span> <span class="mf">111</span><span class="p">)</span>
+<span class="c1">// &quot;hello&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>String.fromCharCode</code>方法的参数为空，就返回空字符串；否则，返回参数对应的 Unicode 字符串。</p>
+<p>注意，该方法不支持 Unicode 码点大于<code>0xFFFF</code>的字符，即传入的参数不能大于<code>0xFFFF</code>（即十进制的 65535）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="mh">0x20BB7</span><span class="p">)</span>
+<span class="c1">// &quot;ஷ&quot;</span>
+<span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="mh">0x20BB7</span><span class="p">)</span> <span class="o">===</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="mh">0x0BB7</span><span class="p">)</span>
+<span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>String.fromCharCode</code>参数<code>0x20BB7</code>大于<code>0xFFFF</code>，导致返回结果出错。<code>0x20BB7</code>对应的字符是汉字<code>𠮷</code>，但是返回结果却是另一个字符（码点<code>0x0BB7</code>）。这是因为<code>String.fromCharCode</code>发现参数值大于<code>0xFFFF</code>，就会忽略多出的位（即忽略<code>0x20BB7</code>里面的<code>2</code>）。</p>
+<p>这种现象的根本原因在于，码点大于<code>0xFFFF</code>的字符占用四个字节，而 JavaScript 默认支持两个字节的字符。这种情况下，必须把<code>0x20BB7</code>拆成两个字符表示。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="mh">0xD842</span><span class="p">,</span> <span class="mh">0xDFB7</span><span class="p">)</span>
+<span class="c1">// &quot;𠮷&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>0x20BB7</code>拆成两个字符<code>0xD842</code>和<code>0xDFB7</code>（即两个两字节字符，合成一个四字节字符），就能得到正确的结果。码点大于<code>0xFFFF</code>的字符的四字节表示法，由 UTF-16 编码方法决定。</p>
+<h2 id="_3">实例属性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="stringprototypelength">String.prototype.length<a class="headerlink" href="#stringprototypelength" title="Permanent link">&para;</a></h3>
+<p>字符串实例的<code>length</code>属性返回字符串的长度。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">length</span> <span class="c1">// 3</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="_4">实例方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="stringprototypecharat">String.prototype.charAt()<a class="headerlink" href="#stringprototypecharat" title="Permanent link">&para;</a></h3>
+<p><code>charAt</code>方法返回指定位置的字符，参数是从<code>0</code>开始编号的位置。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">);</span>
+
+<span class="nx">s</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;b&quot;</span>
+<span class="nx">s</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;c&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>这个方法完全可以用数组下标替代。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;b&quot;</span>
+<span class="s1">&#39;abc&#39;</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span> <span class="c1">// &quot;b&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果参数为负数，或大于等于字符串的长度，<code>charAt</code>返回空字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;&quot;</span>
+<span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span> <span class="c1">// &quot;&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="stringprototypecharcodeat">String.prototype.charCodeAt()<a class="headerlink" href="#stringprototypecharcodeat" title="Permanent link">&para;</a></h3>
+<p><code>charCodeAt()</code>方法返回字符串指定位置的 Unicode 码点（十进制表示），相当于<code>String.fromCharCode()</code>的逆操作。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// 98</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>abc</code>的<code>1</code>号位置的字符是<code>b</code>，它的 Unicode 码点是<code>98</code>。</p>
+<p>如果没有任何参数，<code>charCodeAt</code>返回首字符的 Unicode 码点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">()</span> <span class="c1">// 97</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果参数为负数，或大于等于字符串的长度，<code>charCodeAt</code>返回<code>NaN</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// NaN</span>
+<span class="s1">&#39;abc&#39;</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span> <span class="c1">// NaN</span>
+</code></pre></div>
+</td></tr></table>
+<p>注意，<code>charCodeAt</code>方法返回的 Unicode 码点不会大于65536（0xFFFF），也就是说，只返回两个字节的字符的码点。如果遇到码点大于 65536 的字符（四个字节的字符），必须连续使用两次<code>charCodeAt</code>，不仅读入<code>charCodeAt(i)</code>，还要读入<code>charCodeAt(i+1)</code>，将两个值放在一起，才能得到准确的字符。</p>
+<h3 id="stringprototypeconcat">String.prototype.concat()<a class="headerlink" href="#stringprototypeconcat" title="Permanent link">&para;</a></h3>
+<p><code>concat</code>方法用于连接两个字符串，返回一个新字符串，不改变原字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">s1</span> <span class="o">=</span> <span class="s1">&#39;abc&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">s2</span> <span class="o">=</span> <span class="s1">&#39;def&#39;</span><span class="p">;</span>
+
+<span class="nx">s1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span> <span class="c1">// &quot;abcdef&quot;</span>
+<span class="nx">s1</span> <span class="c1">// &quot;abc&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>该方法可以接受多个参数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;a&#39;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="c1">// &quot;abc&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果参数不是字符串，<code>concat</code>方法会将其先转为字符串，然后再连接。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">one</span> <span class="o">=</span> <span class="mf">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">two</span> <span class="o">=</span> <span class="mf">2</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">three</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span><span class="p">;</span>
+
+<span class="s1">&#39;&#39;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">one</span><span class="p">,</span> <span class="nx">two</span><span class="p">,</span> <span class="nx">three</span><span class="p">)</span> <span class="c1">// &quot;123&quot;</span>
+<span class="nx">one</span> <span class="o">+</span> <span class="nx">two</span> <span class="o">+</span> <span class="nx">three</span> <span class="c1">// &quot;33&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>concat</code>方法将参数先转成字符串再连接，所以返回的是一个三个字符的字符串。作为对比，加号运算符在两个运算数都是数值时，不会转换类型，所以返回的是一个两个字符的字符串。</p>
+<h3 id="stringprototypeslice">String.prototype.slice()<a class="headerlink" href="#stringprototypeslice" title="Permanent link">&para;</a></h3>
+<p><code>slice()</code>方法用于从原字符串取出子字符串并返回，不改变原字符串。它的第一个参数是子字符串的开始位置，第二个参数是子字符串的结束位置（不含该位置）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">4</span><span class="p">)</span> <span class="c1">// &quot;Java&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果省略第二个参数，则表示子字符串一直到原字符串结束。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果参数是负值，表示从结尾开始倒数计算的位置，即该负值加上字符串长度。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">6</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+<span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">6</span><span class="p">)</span> <span class="c1">// &quot;Java&quot;</span>
+<span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;p&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果第一个参数大于第二个参数（正数情况下），<code>slice()</code>方法返回一个空字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="stringprototypesubstring">String.prototype.substring()<a class="headerlink" href="#stringprototypesubstring" title="Permanent link">&para;</a></h3>
+<p><code>substring</code>方法用于从原字符串取出子字符串并返回，不改变原字符串，跟<code>slice</code>方法很相像。它的第一个参数表示子字符串的开始位置，第二个位置表示结束位置（返回结果不含该位置）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">4</span><span class="p">)</span> <span class="c1">// &quot;Java&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果省略第二个参数，则表示子字符串一直到原字符串的结束。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果第一个参数大于第二个参数，<code>substring</code>方法会自动更换两个参数的位置。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span> <span class="mf">4</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+<span class="c1">// 等同于</span>
+<span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span> <span class="mf">10</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，调换<code>substring</code>方法的两个参数，都得到同样的结果。</p>
+<p>如果参数是负数，<code>substring</code>方法会自动将负数转为0。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="o">-</span><span class="mf">3</span><span class="p">)</span> <span class="c1">// &quot;JavaScript&quot;</span>
+<span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">3</span><span class="p">)</span> <span class="c1">// &quot;Java&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，第二个例子的参数<code>-3</code>会自动变成<code>0</code>，等同于<code>'JavaScript'.substring(4, 0)</code>。由于第二个参数小于第一个参数，会自动互换位置，所以返回<code>Java</code>。</p>
+<p>由于这些规则违反直觉，因此不建议使用<code>substring</code>方法，应该优先使用<code>slice</code>。</p>
+<h3 id="stringprototypesubstr">String.prototype.substr()<a class="headerlink" href="#stringprototypesubstr" title="Permanent link">&para;</a></h3>
+<p><code>substr</code>方法用于从原字符串取出子字符串并返回，不改变原字符串，跟<code>slice</code>和<code>substring</code>方法的作用相同。</p>
+<p><code>substr</code>方法的第一个参数是子字符串的开始位置（从0开始计算），第二个参数是子字符串的长度。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span> <span class="mf">6</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果省略第二个参数，则表示子字符串一直到原字符串的结束。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">4</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果第一个参数是负数，表示倒数计算的字符位置。如果第二个参数是负数，将被自动转为0，因此会返回空字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="o">-</span><span class="mf">6</span><span class="p">)</span> <span class="c1">// &quot;Script&quot;</span>
+<span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">4</span><span class="p">,</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// &quot;&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，第二个例子的参数<code>-1</code>自动转为<code>0</code>，表示子字符串长度为<code>0</code>，所以返回空字符串。</p>
+<h3 id="stringprototypeindexofstringprototypelastindexof">String.prototype.indexOf()，String.prototype.lastIndexOf()<a class="headerlink" href="#stringprototypeindexofstringprototypelastindexof" title="Permanent link">&para;</a></h3>
+<p><code>indexOf</code>方法用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回<code>-1</code>，就表示不匹配。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;hello world&#39;</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="c1">// 4</span>
+<span class="s1">&#39;JavaScript&#39;</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">)</span> <span class="c1">// -1</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>indexOf</code>方法还可以接受第二个参数，表示从该位置开始向后匹配。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;hello world&#39;</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="mf">6</span><span class="p">)</span> <span class="c1">// 7</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>lastIndexOf</code>方法的用法跟<code>indexOf</code>方法一致，主要的区别是<code>lastIndexOf</code>从尾部开始匹配，<code>indexOf</code>则是从头部开始匹配。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;hello world&#39;</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="c1">// 7</span>
+</code></pre></div>
+</td></tr></table>
+<p>另外，<code>lastIndexOf</code>的第二个参数表示从该位置起向前匹配。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;hello world&#39;</span><span class="p">.</span><span class="nx">lastIndexOf</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="mf">6</span><span class="p">)</span> <span class="c1">// 4</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="stringprototypetrim">String.prototype.trim()<a class="headerlink" href="#stringprototypetrim" title="Permanent link">&para;</a></h3>
+<p><code>trim</code>方法用于去除字符串两端的空格，返回一个新字符串，不改变原字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;  hello world  &#39;</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+<span class="c1">// &quot;hello world&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>该方法去除的不仅是空格，还包括制表符（<code>\t</code>、<code>\v</code>）、换行符（<code>\n</code>）和回车符（<code>\r</code>）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;\r\nabc \t&#39;</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span> <span class="c1">// &#39;abc&#39;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="stringprototypetolowercasestringprototypetouppercase">String.prototype.toLowerCase()，String.prototype.toUpperCase()<a class="headerlink" href="#stringprototypetolowercasestringprototypetouppercase" title="Permanent link">&para;</a></h3>
+<p><code>toLowerCase</code>方法用于将一个字符串全部转为小写，<code>toUpperCase</code>则是全部转为大写。它们都返回一个新字符串，不改变原字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;Hello World&#39;</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span>
+<span class="c1">// &quot;hello world&quot;</span>
+
+<span class="s1">&#39;Hello World&#39;</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span>
+<span class="c1">// &quot;HELLO WORLD&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="stringprototypematch">String.prototype.match()<a class="headerlink" href="#stringprototypematch" title="Permanent link">&para;</a></h3>
+<p><code>match</code>方法用于确定原字符串是否匹配某个子字符串，返回一个数组，成员为匹配的第一个字符串。如果没有找到匹配，则返回<code>null</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;cat, bat, sat, fat&#39;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="s1">&#39;at&#39;</span><span class="p">)</span> <span class="c1">// [&quot;at&quot;]</span>
+<span class="s1">&#39;cat, bat, sat, fat&#39;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="s1">&#39;xt&#39;</span><span class="p">)</span> <span class="c1">// null</span>
+</code></pre></div>
+</td></tr></table>
+<p>返回的数组还有<code>index</code>属性和<code>input</code>属性，分别表示匹配字符串开始的位置和原始字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">matches</span> <span class="o">=</span> <span class="s1">&#39;cat, bat, sat, fat&#39;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="s1">&#39;at&#39;</span><span class="p">);</span>
+<span class="nx">matches</span><span class="p">.</span><span class="nx">index</span> <span class="c1">// 1</span>
+<span class="nx">matches</span><span class="p">.</span><span class="nx">input</span> <span class="c1">// &quot;cat, bat, sat, fat&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>match</code>方法还可以使用正则表达式作为参数，详见《正则表达式》一章。</p>
+<h3 id="stringprototypesearchstringprototypereplace">String.prototype.search()，String.prototype.replace()<a class="headerlink" href="#stringprototypesearchstringprototypereplace" title="Permanent link">&para;</a></h3>
+<p><code>search</code>方法的用法基本等同于<code>match</code>，但是返回值为匹配的第一个位置。如果没有找到匹配，则返回<code>-1</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;cat, bat, sat, fat&#39;</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="s1">&#39;at&#39;</span><span class="p">)</span> <span class="c1">// 1</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>search</code>方法还可以使用正则表达式作为参数，详见《正则表达式》一节。</p>
+<p><code>replace</code>方法用于替换匹配的子字符串，一般情况下只替换第一个匹配（除非使用带有<code>g</code>修饰符的正则表达式）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;aaa&#39;</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="c1">// &quot;baa&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>replace</code>方法还可以使用正则表达式作为参数，详见《正则表达式》一节。</p>
+<h3 id="stringprototypesplit">String.prototype.split()<a class="headerlink" href="#stringprototypesplit" title="Permanent link">&para;</a></h3>
+<p><code>split</code>方法按照给定规则分割字符串，返回一个由分割出来的子字符串组成的数组。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果分割规则为空字符串，则返回数组的成员是原字符串的每一个字符。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;, &quot;|&quot;, &quot;b&quot;, &quot;|&quot;, &quot;c&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果省略参数，则返回数组的唯一成员就是原字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">()</span> <span class="c1">// [&quot;a|b|c&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果满足分割规则的两个部分紧邻着（即两个分割符中间没有其他字符），则返回数组之中会有一个空字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;a||c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="c1">// [&#39;a&#39;, &#39;&#39;, &#39;c&#39;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果满足分割规则的部分处于字符串的开头或结尾（即它的前面或后面没有其他字符），则返回数组的第一个或最后一个成员是一个空字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="c1">// [&quot;&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+<span class="s1">&#39;a|b|&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;, &quot;b&quot;, &quot;&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>split</code>方法还可以接受第二个参数，限定返回数组的最大成员数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span> <span class="c1">// []</span>
+<span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;]</span>
+<span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="mf">2</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;, &quot;b&quot;]</span>
+<span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="mf">3</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+<span class="s1">&#39;a|b|c&#39;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="mf">4</span><span class="p">)</span> <span class="c1">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>split</code>方法的第二个参数，决定了返回数组的成员数。</p>
+<p><code>split</code>方法还可以使用正则表达式作为参数，详见《正则表达式》一节。</p>
+<h3 id="stringprototypelocalecompare">String.prototype.localeCompare()<a class="headerlink" href="#stringprototypelocalecompare" title="Permanent link">&para;</a></h3>
+<p><code>localeCompare</code>方法用于比较两个字符串。它返回一个整数，如果小于0，表示第一个字符串小于第二个字符串；如果等于0，表示两者相等；如果大于0，表示第一个字符串大于第二个字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;apple&#39;</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span> <span class="c1">// -1</span>
+<span class="s1">&#39;apple&#39;</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="s1">&#39;apple&#39;</span><span class="p">)</span> <span class="c1">// 0</span>
+</code></pre></div>
+</td></tr></table>
+<p>该方法的最大特点，就是会考虑自然语言的顺序。举例来说，正常情况下，大写的英文字母小于小写字母。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;B&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;a&#39;</span> <span class="c1">// false</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，字母<code>B</code>小于字母<code>a</code>。因为 JavaScript 采用的是 Unicode 码点比较，<code>B</code>的码点是66，而<code>a</code>的码点是97。</p>
+<p>但是，<code>localeCompare</code>方法会考虑自然语言的排序情况，将<code>B</code>排在<code>a</code>的前面。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;B&#39;</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="c1">// 1</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>localeCompare</code>方法返回整数1，表示<code>B</code>较大。</p>
+<p><code>localeCompare</code>还可以有第二个参数，指定所使用的语言（默认是英语），然后根据该语言的规则进行比较。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s1">&#39;ä&#39;</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;de&#39;</span><span class="p">)</span> <span class="c1">// -1</span>
+<span class="s1">&#39;ä&#39;</span><span class="p">.</span><span class="nx">localeCompare</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;sv&#39;</span><span class="p">)</span> <span class="c1">// 1</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>de</code>表示德语，<code>sv</code>表示瑞典语。德语中，<code>ä</code>小于<code>z</code>，所以返回<code>-1</code>；瑞典语中，<code>ä</code>大于<code>z</code>，所以返回<code>1</code>。</p>
+<h2 id="_5">参考链接<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Ariya Hidayat, <a href="http://ariya.ofilabs.com/2014/02/javascript-string-substring-substr-slice.html">JavaScript String: substring, substr, slice</a></li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../number/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Number 对象" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Number 对象
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../math/" class="md-footer__link md-footer__link--next" aria-label="Next: Math 对象" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Math 对象
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

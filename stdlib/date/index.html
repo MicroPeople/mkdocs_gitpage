@@ -1,0 +1,2675 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Date 对象 - javascript-tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#date" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="javascript-tutorial" class="md-header__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            javascript-tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Date 对象
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="javascript-tutorial" class="md-nav__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    javascript-tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          入门篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="入门篇" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          入门篇
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/introduction/" class="md-nav__link">
+        导论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/history/" class="md-nav__link">
+        历史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/grammar/" class="md-nav__link">
+        基本语法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据类型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/null-undefined-boolean/" class="md-nav__link">
+        null，undefined 和布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/number/" class="md-nav__link">
+        数值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/object/" class="md-nav__link">
+        对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/function/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/array/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="运算符" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/arithmetic/" class="md-nav__link">
+        算术运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/comparison/" class="md-nav__link">
+        比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/boolean/" class="md-nav__link">
+        布尔运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/bit/" class="md-nav__link">
+        二进制位运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/priority/" class="md-nav__link">
+        其他运算符，运算顺序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          语法专题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法专题" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          语法专题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/conversion/" class="md-nav__link">
+        数据类型的转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/error/" class="md-nav__link">
+        错误处理机制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/style/" class="md-nav__link">
+        编程风格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/console/" class="md-nav__link">
+        console 对象与控制台
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          标准库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="标准库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          标准库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object/" class="md-nav__link">
+        Object 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attributes/" class="md-nav__link">
+        属性描述对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../array/" class="md-nav__link">
+        Array 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wrapper/" class="md-nav__link">
+        包装对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../boolean/" class="md-nav__link">
+        Boolean 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../number/" class="md-nav__link">
+        Number 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../string/" class="md-nav__link">
+        String 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math/" class="md-nav__link">
+        Math 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Date 对象
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Date 对象
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    普通函数的用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    构造函数的用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    日期的运算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    静态方法
+  </a>
+  
+    <nav class="md-nav" aria-label="静态方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datenow" class="md-nav__link">
+    Date.now()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dateparse" class="md-nav__link">
+    Date.parse()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dateutc" class="md-nav__link">
+    Date.UTC()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    实例方法
+  </a>
+  
+    <nav class="md-nav" aria-label="实例方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dateprototypevalueof" class="md-nav__link">
+    Date.prototype.valueOf()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to" class="md-nav__link">
+    to 类方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get 类方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    set 类方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regexp/" class="md-nav__link">
+        RegExp 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json/" class="md-nav__link">
+        JSON 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          面向对象编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="面向对象编程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          面向对象编程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/new/" class="md-nav__link">
+        实例对象与 new 命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/this/" class="md-nav__link">
+        this 关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/prototype/" class="md-nav__link">
+        对象的继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/object/" class="md-nav__link">
+        Object 对象的相关方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/strict/" class="md-nav__link">
+        严格模式
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          异步操作
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="异步操作" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          异步操作
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/timer/" class="md-nav__link">
+        定时器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/promise/" class="md-nav__link">
+        Promise 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          DOM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DOM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          DOM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/node/" class="md-nav__link">
+        Node 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/nodelist/" class="md-nav__link">
+        NodeList 接口，HTMLCollection 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/parentnode/" class="md-nav__link">
+        ParentNode 接口，ChildNode 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/document/" class="md-nav__link">
+        Document 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/element/" class="md-nav__link">
+        Element 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/attributes/" class="md-nav__link">
+        属性的操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/text/" class="md-nav__link">
+        Text 节点和 DocumentFragment 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/css/" class="md-nav__link">
+        CSS 操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/mutationobserver/" class="md-nav__link">
+        Mutation Observer API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          事件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="事件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          事件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/eventtarget/" class="md-nav__link">
+        EventTarget 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/model/" class="md-nav__link">
+        事件模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/event/" class="md-nav__link">
+        Event 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/mouse/" class="md-nav__link">
+        鼠标事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/keyboard/" class="md-nav__link">
+        键盘事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/progress/" class="md-nav__link">
+        进度事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/form/" class="md-nav__link">
+        表单事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/touch/" class="md-nav__link">
+        触摸事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/drag/" class="md-nav__link">
+        拖拉事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/common/" class="md-nav__link">
+        其他常见事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/globaleventhandlers/" class="md-nav__link">
+        GlobalEventHandlers 接口
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          浏览器模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="浏览器模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          浏览器模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/engine/" class="md-nav__link">
+        浏览器模型概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/window/" class="md-nav__link">
+        window 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/navigator/" class="md-nav__link">
+        Navigator 对象，Screen 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cookie/" class="md-nav__link">
+        Cookie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/xmlhttprequest/" class="md-nav__link">
+        XMLHttpRequest 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/same-origin/" class="md-nav__link">
+        同源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cors/" class="md-nav__link">
+        CORS 通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/storage/" class="md-nav__link">
+        Storage 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/history/" class="md-nav__link">
+        History 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/location/" class="md-nav__link">
+        Location 对象，URL 对象，URLSearchParams 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/arraybuffer/" class="md-nav__link">
+        ArrayBuffer 对象，Blob 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/file/" class="md-nav__link">
+        File 对象，FileList 对象，FileReader 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/form/" class="md-nav__link">
+        表单，FormData 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/indexeddb/" class="md-nav__link">
+        IndexedDB API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/webworker/" class="md-nav__link">
+        Web Worker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          附录网页元素接口
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="附录网页元素接口" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          附录网页元素接口
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/a/" class="md-nav__link">
+        a
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/image/" class="md-nav__link">
+        img
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/form/" class="md-nav__link">
+        form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/input/" class="md-nav__link">
+        input
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/button/" class="md-nav__link">
+        button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/option/" class="md-nav__link">
+        option
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/video/" class="md-nav__link">
+        video & audio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    普通函数的用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    构造函数的用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    日期的运算
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    静态方法
+  </a>
+  
+    <nav class="md-nav" aria-label="静态方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datenow" class="md-nav__link">
+    Date.now()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dateparse" class="md-nav__link">
+    Date.parse()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dateutc" class="md-nav__link">
+    Date.UTC()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    实例方法
+  </a>
+  
+    <nav class="md-nav" aria-label="实例方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dateprototypevalueof" class="md-nav__link">
+    Date.prototype.valueOf()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to" class="md-nav__link">
+    to 类方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get 类方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    set 类方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="date">Date 对象<a class="headerlink" href="#date" title="Permanent link">&para;</a></h1>
+<p><code>Date</code>对象是 JavaScript 原生的时间库。它以国际标准时间（UTC）1970年1月1日00:00:00作为时间的零点，可以表示的时间范围是前后各1亿天（单位为毫秒）。</p>
+<h2 id="_1">普通函数的用法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><code>Date</code>对象可以作为普通函数直接调用，返回一个代表当前时间的字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">Date</span><span class="p">()</span>
+<span class="c1">// &quot;Tue Dec 01 2015 09:34:43 GMT+0800 (CST)&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>注意，即使带有参数，<code>Date</code>作为普通函数使用时，返回的还是当前时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">Date</span><span class="p">(</span><span class="mf">2000</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<span class="c1">// &quot;Tue Dec 01 2015 09:34:43 GMT+0800 (CST)&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码说明，无论有没有参数，直接调用<code>Date</code>总是返回当前时间。</p>
+<h2 id="_2">构造函数的用法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><code>Date</code>还可以当作构造函数使用。对它使用<code>new</code>命令，会返回一个<code>Date</code>对象的实例。如果不加参数，实例代表的就是当前时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">today</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>Date</code>实例有一个独特的地方。其他对象求值的时候，都是默认调用<code>.valueOf()</code>方法，但是<code>Date</code>实例求值的时候，默认调用的是<code>toString()</code>方法。这导致对<code>Date</code>实例求值，返回的是一个字符串，代表该实例对应的时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">today</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+<span class="nx">today</span>
+<span class="c1">// &quot;Tue Dec 01 2015 09:34:43 GMT+0800 (CST)&quot;</span>
+
+<span class="c1">// 等同于</span>
+<span class="nx">today</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+<span class="c1">// &quot;Tue Dec 01 2015 09:34:43 GMT+0800 (CST)&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>today</code>是<code>Date</code>的实例，直接求值等同于调用<code>toString</code>方法。</p>
+<p>作为构造函数时，<code>Date</code>对象可以接受多种格式的参数，返回一个该参数对应的时间实例。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 参数为时间零点开始计算的毫秒数</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">1378218728000</span><span class="p">)</span>
+<span class="c1">// Tue Sep 03 2013 22:32:08 GMT+0800 (CST)</span>
+
+<span class="c1">// 参数为日期字符串</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+<span class="c1">// Sun Jan 06 2013 00:00:00 GMT+0800 (CST)</span>
+
+<span class="c1">// 参数为多个整数，</span>
+<span class="c1">// 代表年、月、日、小时、分钟、秒、毫秒</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<span class="c1">// Tue Jan 01 2013 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>关于<code>Date</code>构造函数的参数，有几点说明。</p>
+<p>第一点，参数可以是负整数，代表1970年元旦之前的时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="o">-</span><span class="mf">1378218728000</span><span class="p">)</span>
+<span class="c1">// Fri Apr 30 1926 17:27:52 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>第二点，只要是能被<code>Date.parse()</code>方法解析的字符串，都可以当作参数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;2013-2-15&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;2013/2/15&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;02/15/2013&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;2013-FEB-15&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;FEB, 15, 2013&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;FEB 15, 2013&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;February, 15, 2013&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;February 15, 2013&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;15 Feb 2013&#39;</span><span class="p">)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;15, February, 2013&#39;</span><span class="p">)</span>
+<span class="c1">// Fri Feb 15 2013 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面多种日期字符串的写法，返回的都是同一个时间。</p>
+<p>第三，参数为年、月、日等多个整数时，年和月是不能省略的，其他参数都可以省略的。也就是说，这时至少需要两个参数，因为如果只使用“年”这一个参数，<code>Date</code>会将其解释为毫秒数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">)</span>
+<span class="c1">// Thu Jan 01 1970 08:00:02 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，2013被解释为毫秒数，而不是年份。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<span class="c1">// Tue Jan 01 2013 00:00:00 GMT+0800 (CST)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<span class="c1">// Tue Jan 01 2013 00:00:00 GMT+0800 (CST)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<span class="c1">// Tue Jan 01 2013 00:00:00 GMT+0800 (CST)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<span class="c1">// Tue Jan 01 2013 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，不管有几个参数，返回的都是2013年1月1日零点。</p>
+<p>最后，各个参数的取值范围如下。</p>
+<ul>
+<li>年：使用四位数年份，比如<code>2000</code>。如果写成两位数或个位数，则加上<code>1900</code>，即<code>10</code>代表1910年。如果是负数，表示公元前。</li>
+<li>月：<code>0</code>表示一月，依次类推，<code>11</code>表示12月。</li>
+<li>日：<code>1</code>到<code>31</code>。</li>
+<li>小时：<code>0</code>到<code>23</code>。</li>
+<li>分钟：<code>0</code>到<code>59</code>。</li>
+<li>秒：<code>0</code>到<code>59</code></li>
+<li>毫秒：<code>0</code>到<code>999</code>。</li>
+</ul>
+<p>注意，月份从<code>0</code>开始计算，但是，天数从<code>1</code>开始计算。另外，除了日期的默认值为<code>1</code>，小时、分钟、秒钟和毫秒的默认值都是<code>0</code>。</p>
+<p>这些参数如果超出了正常范围，会被自动折算。比如，如果月设为<code>15</code>，就折算为下一年的4月。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">15</span><span class="p">)</span>
+<span class="c1">// Tue Apr 01 2014 00:00:00 GMT+0800 (CST)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<span class="c1">// Mon Dec 31 2012 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码的第二个例子，日期设为<code>0</code>，就代表上个月的最后一天。</p>
+<p>参数还可以使用负数，表示扣去的时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span>
+<span class="c1">// Sat Dec 01 2012 00:00:00 GMT+0800 (CST)</span>
+<span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1</span><span class="p">)</span>
+<span class="c1">// Sun Dec 30 2012 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，分别对月和日使用了负数，表示从基准日扣去相应的时间。</p>
+<h2 id="_3">日期的运算<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>类型自动转换时，<code>Date</code>实例如果转为数值，则等于对应的毫秒数；如果转为字符串，则等于对应的日期字符串。所以，两个日期实例对象进行减法运算时，返回的是它们间隔的毫秒数；进行加法运算时，返回的是两个字符串连接而成的新字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2000</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">d2</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2000</span><span class="p">,</span> <span class="mf">3</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d2</span> <span class="o">-</span> <span class="nx">d1</span>
+<span class="c1">// 2678400000</span>
+<span class="nx">d2</span> <span class="o">+</span> <span class="nx">d1</span>
+<span class="c1">// &quot;Sat Apr 01 2000 00:00:00 GMT+0800 (CST)Wed Mar 01 2000 00:00:00 GMT+0800 (CST)&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="_4">静态方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="datenow">Date.now()<a class="headerlink" href="#datenow" title="Permanent link">&para;</a></h3>
+<p><code>Date.now</code>方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="c1">// 1364026285194</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="dateparse">Date.parse()<a class="headerlink" href="#dateparse" title="Permanent link">&para;</a></h3>
+<p><code>Date.parse</code>方法用来解析日期字符串，返回该时间距离时间零点（1970年1月1日 00:00:00）的毫秒数。</p>
+<p>日期字符串应该符合 RFC 2822 和 ISO 8061 这两个标准，即<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>格式，其中最后的<code>Z</code>表示时区。但是，其他格式也可以被解析，请看下面的例子。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;Aug 9, 1995&#39;</span><span class="p">)</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;January 26, 2011 13:51:50&#39;</span><span class="p">)</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;Mon, 25 Dec 1995 13:30:00 GMT&#39;</span><span class="p">)</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;Mon, 25 Dec 1995 13:30:00 +0430&#39;</span><span class="p">)</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;2011-10-10&#39;</span><span class="p">)</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;2011-10-10T14:48:00&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面的日期字符串都可以解析。</p>
+<p>如果解析失败，返回<code>NaN</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;xxx&#39;</span><span class="p">)</span> <span class="c1">// NaN</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="dateutc">Date.UTC()<a class="headerlink" href="#dateutc" title="Permanent link">&para;</a></h3>
+<p><code>Date.UTC</code>方法接受年、月、日等变量作为参数，返回该时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 格式</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">UTC</span><span class="p">(</span><span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">[,</span> <span class="nx">date</span><span class="p">[,</span> <span class="nx">hrs</span><span class="p">[,</span> <span class="nx">min</span><span class="p">[,</span> <span class="nx">sec</span><span class="p">[,</span> <span class="nx">ms</span><span class="p">]]]]])</span>
+
+<span class="c1">// 用法</span>
+<span class="nb">Date</span><span class="p">.</span><span class="nx">UTC</span><span class="p">(</span><span class="mf">2011</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">,</span> <span class="mf">4</span><span class="p">,</span> <span class="mf">567</span><span class="p">)</span>
+<span class="c1">// 1293847384567</span>
+</code></pre></div>
+</td></tr></table>
+<p>该方法的参数用法与<code>Date</code>构造函数完全一致，比如月从<code>0</code>开始计算，日期从<code>1</code>开始计算。区别在于<code>Date.UTC</code>方法的参数，会被解释为 UTC 时间（世界标准时间），<code>Date</code>构造函数的参数会被解释为当前时区的时间。</p>
+<h2 id="_5">实例方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><code>Date</code>的实例对象，有几十个自己的方法，除了<code>valueOf</code>和<code>toString</code>，可以分为以下三类。</p>
+<ul>
+<li><code>to</code>类：从<code>Date</code>对象返回一个字符串，表示指定的时间。</li>
+<li><code>get</code>类：获取<code>Date</code>对象的日期和时间。</li>
+<li><code>set</code>类：设置<code>Date</code>对象的日期和时间。</li>
+</ul>
+<h3 id="dateprototypevalueof">Date.prototype.valueOf()<a class="headerlink" href="#dateprototypevalueof" title="Permanent link">&para;</a></h3>
+<p><code>valueOf</code>方法返回实例对象距离时间零点（1970年1月1日00:00:00 UTC）对应的毫秒数，该方法等同于<code>getTime</code>方法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">valueOf</span><span class="p">()</span> <span class="c1">// 1362790014817</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="c1">// 1362790014817</span>
+</code></pre></div>
+</td></tr></table>
+<p>预期为数值的场合，<code>Date</code>实例会自动调用该方法，所以可以用下面的方法计算时间的间隔。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+<span class="c1">// ...</span>
+<span class="kd">var</span> <span class="nx">end</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">elapsed</span> <span class="o">=</span> <span class="nx">end</span> <span class="o">-</span> <span class="nx">start</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="to">to 类方法<a class="headerlink" href="#to" title="Permanent link">&para;</a></h3>
+<p><strong>（1）Date.prototype.toString()</strong></p>
+<p><code>toString</code>方法返回一个完整的日期字符串。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
+<span class="c1">// &quot;Tue Jan 01 2013 00:00:00 GMT+0800 (CST)&quot;</span>
+<span class="nx">d</span>
+<span class="c1">// &quot;Tue Jan 01 2013 00:00:00 GMT+0800 (CST)&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>因为<code>toString</code>是默认的调用方法，所以如果直接读取<code>Date</code>实例，就相当于调用这个方法。</p>
+<p><strong>（2）Date.prototype.toUTCString()</strong></p>
+<p><code>toUTCString</code>方法返回对应的 UTC 时间，也就是比北京时间晚8个小时。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">()</span>
+<span class="c1">// &quot;Mon, 31 Dec 2012 16:00:00 GMT&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（3）Date.prototype.toISOString()</strong></p>
+<p><code>toISOString</code>方法返回对应时间的 ISO8601 写法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toISOString</span><span class="p">()</span>
+<span class="c1">// &quot;2012-12-31T16:00:00.000Z&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>注意，<code>toISOString</code>方法返回的总是 UTC 时区的时间。</p>
+<p><strong>（4）Date.prototype.toJSON()</strong></p>
+<p><code>toJSON</code>方法返回一个符合 JSON 格式的 ISO 日期字符串，与<code>toISOString</code>方法的返回结果完全相同。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()</span>
+<span class="c1">// &quot;2012-12-31T16:00:00.000Z&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（5）Date.prototype.toDateString()</strong></p>
+<p><code>toDateString</code>方法返回日期字符串（不含小时、分和秒）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">toDateString</span><span class="p">()</span> <span class="c1">// &quot;Tue Jan 01 2013&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（6）Date.prototype.toTimeString()</strong></p>
+<p><code>toTimeString</code>方法返回时间字符串（不含年月日）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">toTimeString</span><span class="p">()</span> <span class="c1">// &quot;00:00:00 GMT+0800 (CST)&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（7）本地时间</strong></p>
+<p>以下三种方法，可以将 Date 实例转为表示本地时间的字符串。</p>
+<ul>
+<li><code>Date.prototype.toLocaleString()</code>：完整的本地时间。</li>
+<li><code>Date.prototype.toLocaleDateString()</code>：本地日期（不含小时、分和秒）。</li>
+<li><code>Date.prototype.toLocaleTimeString()</code>：本地时间（不含年月日）。</li>
+</ul>
+<p>下面是用法实例。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">()</span>
+<span class="c1">// 中文版浏览器为&quot;2013年1月1日 上午12:00:00&quot;</span>
+<span class="c1">// 英文版浏览器为&quot;1/1/2013 12:00:00 AM&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">()</span>
+<span class="c1">// 中文版浏览器为&quot;2013年1月1日&quot;</span>
+<span class="c1">// 英文版浏览器为&quot;1/1/2013&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">()</span>
+<span class="c1">// 中文版浏览器为&quot;上午12:00:00&quot;</span>
+<span class="c1">// 英文版浏览器为&quot;12:00:00 AM&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>这三个方法都有两个可选的参数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">dateObj</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">([</span><span class="nx">locales</span><span class="p">[,</span> <span class="nx">options</span><span class="p">]])</span>
+<span class="nx">dateObj</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">([</span><span class="nx">locales</span><span class="p">[,</span> <span class="nx">options</span><span class="p">]])</span>
+<span class="nx">dateObj</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">([</span><span class="nx">locales</span><span class="p">[,</span> <span class="nx">options</span><span class="p">]])</span>
+</code></pre></div>
+</td></tr></table>
+<p>这两个参数中，<code>locales</code>是一个指定所用语言的字符串，<code>options</code>是一个配置对象。下面是<code>locales</code>的例子，分别采用<code>en-US</code>和<code>zh-CN</code>语言设定。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">)</span> <span class="c1">// &quot;1/1/2013, 12:00:00 AM&quot;</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleString</span><span class="p">(</span><span class="s1">&#39;zh-CN&#39;</span><span class="p">)</span> <span class="c1">// &quot;2013/1/1 上午12:00:00&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">)</span> <span class="c1">// &quot;1/1/2013&quot;</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;zh-CN&#39;</span><span class="p">)</span> <span class="c1">// &quot;2013/1/1&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">)</span> <span class="c1">// &quot;12:00:00 AM&quot;</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">&#39;zh-CN&#39;</span><span class="p">)</span> <span class="c1">// &quot;上午12:00:00&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>options</code>配置对象有以下属性。</p>
+<ul>
+<li><code>dateStyle</code>：可能的值为<code>full</code>、<code>long</code>、<code>medium</code>、<code>short</code>。</li>
+<li><code>timeStyle</code>：可能的值为<code>full</code>、<code>long</code>、<code>medium</code>、<code>short</code>。</li>
+<li><code>month</code>：可能的值为<code>numeric</code>、<code>2-digit</code>、<code>long</code>、<code>short</code>、<code>narrow</code>。</li>
+<li><code>year</code>：可能的值为<code>numeric</code>、<code>2-digit</code>。</li>
+<li><code>weekday</code>：可能的值为<code>long</code>、<code>short</code>、<code>narrow</code>。</li>
+<li><code>day</code>、<code>hour</code>、<code>minute</code>、<code>second</code>：可能的值为<code>numeric</code>、<code>2-digit</code>。</li>
+<li><code>timeZone</code>：可能的值为 IANA 的时区数据库。</li>
+<li><code>timeZooneName</code>：可能的值为<code>long</code>、<code>short</code>。</li>
+<li><code>hour12</code>：24小时周期还是12小时周期，可能的值为<code>true</code>、<code>false</code>。</li>
+</ul>
+<p>下面是用法实例。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mf">2013</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">weekday</span><span class="o">:</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span>
+  <span class="nx">year</span><span class="o">:</span> <span class="s1">&#39;numeric&#39;</span><span class="p">,</span>
+  <span class="nx">month</span><span class="o">:</span> <span class="s1">&#39;long&#39;</span><span class="p">,</span>
+  <span class="nx">day</span><span class="o">:</span> <span class="s1">&#39;numeric&#39;</span>
+<span class="p">})</span>
+<span class="c1">// &quot;Tuesday, January 1, 2013&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">day</span><span class="o">:</span> <span class="s2">&quot;2-digit&quot;</span><span class="p">,</span>
+  <span class="nx">month</span><span class="o">:</span> <span class="s2">&quot;long&quot;</span><span class="p">,</span>
+  <span class="nx">year</span><span class="o">:</span> <span class="s2">&quot;2-digit&quot;</span>
+<span class="p">});</span>
+<span class="c1">// &quot;January 01, 13&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">timeZone</span><span class="o">:</span> <span class="s1">&#39;UTC&#39;</span><span class="p">,</span>
+  <span class="nx">timeZoneName</span><span class="o">:</span> <span class="s1">&#39;short&#39;</span>
+<span class="p">})</span>
+<span class="c1">// &quot;4:00:00 PM UTC&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">timeZone</span><span class="o">:</span> <span class="s1">&#39;Asia/Shanghai&#39;</span><span class="p">,</span>
+  <span class="nx">timeZoneName</span><span class="o">:</span> <span class="s1">&#39;long&#39;</span>
+<span class="p">})</span>
+<span class="c1">// &quot;12:00:00 AM China Standard Time&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">hour12</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">})</span>
+<span class="c1">// &quot;00:00:00&quot;</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">toLocaleTimeString</span><span class="p">(</span><span class="s1">&#39;en-US&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">hour12</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">})</span>
+<span class="c1">// &quot;12:00:00 AM&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="get">get 类方法<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
+<p><code>Date</code>对象提供了一系列<code>get*</code>方法，用来获取实例对象某个方面的值。</p>
+<ul>
+<li><code>getTime()</code>：返回实例距离1970年1月1日00:00:00的毫秒数，等同于<code>valueOf</code>方法。</li>
+<li><code>getDate()</code>：返回实例对象对应每个月的几号（从1开始）。</li>
+<li><code>getDay()</code>：返回星期几，星期日为0，星期一为1，以此类推。</li>
+<li><code>getFullYear()</code>：返回四位的年份。</li>
+<li><code>getMonth()</code>：返回月份（0表示1月，11表示12月）。</li>
+<li><code>getHours()</code>：返回小时（0-23）。</li>
+<li><code>getMilliseconds()</code>：返回毫秒（0-999）。</li>
+<li><code>getMinutes()</code>：返回分钟（0-59）。</li>
+<li><code>getSeconds()</code>：返回秒（0-59）。</li>
+<li><code>getTimezoneOffset()</code>：返回当前时间与 UTC 的时区差异，以分钟表示，返回结果考虑到了夏令时因素。</li>
+</ul>
+<p>所有这些<code>get*</code>方法返回的都是整数，不同方法返回值的范围不一样。</p>
+<ul>
+<li>分钟和秒：0 到 59</li>
+<li>小时：0 到 23</li>
+<li>星期：0（星期天）到 6（星期六）</li>
+<li>日期：1 到 31</li>
+<li>月份：0（一月）到 11（十二月）</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="c1">// 6</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span> <span class="c1">// 0</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">()</span> <span class="c1">// 2013</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">getTimezoneOffset</span><span class="p">()</span> <span class="c1">// -480</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，最后一行返回<code>-480</code>，即 UTC 时间减去当前时间，单位是分钟。<code>-480</code>表示 UTC 比当前时间少480分钟，即当前时区比 UTC 早8个小时。</p>
+<p>下面是一个例子，计算本年度还剩下多少天。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">leftDays</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">today</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">endYear</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">today</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">(),</span> <span class="mf">11</span><span class="p">,</span> <span class="mf">31</span><span class="p">,</span> <span class="mf">23</span><span class="p">,</span> <span class="mf">59</span><span class="p">,</span> <span class="mf">59</span><span class="p">,</span> <span class="mf">999</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">msPerDay</span> <span class="o">=</span> <span class="mf">24</span> <span class="o">*</span> <span class="mf">60</span> <span class="o">*</span> <span class="mf">60</span> <span class="o">*</span> <span class="mf">1000</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">((</span><span class="nx">endYear</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">-</span> <span class="nx">today</span><span class="p">.</span><span class="nx">getTime</span><span class="p">())</span> <span class="o">/</span> <span class="nx">msPerDay</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面这些<code>get*</code>方法返回的都是当前时区的时间，<code>Date</code>对象还提供了这些方法对应的 UTC 版本，用来返回 UTC 时间。</p>
+<ul>
+<li><code>getUTCDate()</code></li>
+<li><code>getUTCFullYear()</code></li>
+<li><code>getUTCMonth()</code></li>
+<li><code>getUTCDay()</code></li>
+<li><code>getUTCHours()</code></li>
+<li><code>getUTCMinutes()</code></li>
+<li><code>getUTCSeconds()</code></li>
+<li><code>getUTCMilliseconds()</code></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+
+<span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="c1">// 6</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">getUTCDate</span><span class="p">()</span> <span class="c1">// 5</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，实例对象<code>d</code>表示当前时区（东八时区）的1月6日0点0分0秒，这个时间对于当前时区来说是1月6日，所以<code>getDate</code>方法返回6，对于 UTC 时区来说是1月5日，所以<code>getUTCDate</code>方法返回5。</p>
+<h3 id="set">set 类方法<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
+<p><code>Date</code>对象提供了一系列<code>set*</code>方法，用来设置实例对象的各个方面。</p>
+<ul>
+<li><code>setDate(date)</code>：设置实例对象对应的每个月的几号（1-31），返回改变后毫秒时间戳。</li>
+<li><code>setFullYear(year [, month, date])</code>：设置四位年份。</li>
+<li><code>setHours(hour [, min, sec, ms])</code>：设置小时（0-23）。</li>
+<li><code>setMilliseconds()</code>：设置毫秒（0-999）。</li>
+<li><code>setMinutes(min [, sec, ms])</code>：设置分钟（0-59）。</li>
+<li><code>setMonth(month [, date])</code>：设置月份（0-11）。</li>
+<li><code>setSeconds(sec [, ms])</code>：设置秒（0-59）。</li>
+<li><code>setTime(milliseconds)</code>：设置毫秒时间戳。</li>
+</ul>
+<p>这些方法基本是跟<code>get*</code>方法一一对应的，但是没有<code>setDay</code>方法，因为星期几是计算出来的，而不是设置的。另外，需要注意的是，凡是涉及到设置月份，都是从0开始算的，即<code>0</code>是1月，<code>11</code>是12月。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span> <span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+
+<span class="nx">d</span> <span class="c1">// Sun Jan 06 2013 00:00:00 GMT+0800 (CST)</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="mf">9</span><span class="p">)</span> <span class="c1">// 1357660800000</span>
+<span class="nx">d</span> <span class="c1">// Wed Jan 09 2013 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>set*</code>方法的参数都会自动折算。以<code>setDate()</code>为例，如果参数超过当月的最大天数，则向下一个月顺延，如果参数是负数，表示从上个月的最后一天开始减去的天数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+
+<span class="nx">d1</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span> <span class="c1">// 1359648000000</span>
+<span class="nx">d1</span> <span class="c1">// Fri Feb 01 2013 00:00:00 GMT+0800 (CST)</span>
+
+<span class="kd">var</span> <span class="nx">d2</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span> <span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+
+<span class="nx">d2</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">)</span> <span class="c1">// 1356796800000</span>
+<span class="nx">d2</span> <span class="c1">// Sun Dec 30 2012 00:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>d1.setDate(32)</code>将日期设为1月份的32号，因为1月份只有31号，所以自动折算为2月1日。<code>d2.setDate(-1)</code>表示设为上个月的倒数第二天，即12月30日。</p>
+<p><code>set</code>类方法和<code>get</code>类方法，可以结合使用，得到相对时间。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+<span class="c1">// 将日期向后推1000天</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">setDate</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getDate</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1000</span><span class="p">);</span>
+<span class="c1">// 将时间设为6小时后</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">setHours</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()</span> <span class="o">+</span> <span class="mf">6</span><span class="p">);</span>
+<span class="c1">// 将年份设为去年</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">setFullYear</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getFullYear</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>set*</code>系列方法除了<code>setTime()</code>，都有对应的 UTC 版本，即设置 UTC 时区的时间。</p>
+<ul>
+<li><code>setUTCDate()</code></li>
+<li><code>setUTCFullYear()</code></li>
+<li><code>setUTCHours()</code></li>
+<li><code>setUTCMilliseconds()</code></li>
+<li><code>setUTCMinutes()</code></li>
+<li><code>setUTCMonth()</code></li>
+<li><code>setUTCSeconds()</code></li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;January 6, 2013&#39;</span><span class="p">);</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">getUTCHours</span><span class="p">()</span> <span class="c1">// 16</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">setUTCHours</span><span class="p">(</span><span class="mf">22</span><span class="p">)</span> <span class="c1">// 1357423200000</span>
+<span class="nx">d</span> <span class="c1">// Sun Jan 06 2013 06:00:00 GMT+0800 (CST)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，本地时区（东八时区）的1月6日0点0分，是 UTC 时区的前一天下午16点。设为 UTC 时区的22点以后，就变为本地时区的上午6点。</p>
+<h2 id="_6">参考链接<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Rakhitha Nimesh，<a href="http://jspro.com/raw-javascript/beginners-guide-to-javascript-date-and-time/">Getting Started with the Date Object</a></li>
+<li>Ilya Kantor, <a href="http://javascript.info/tutorial/datetime-functions">Date/Time functions</a></li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../math/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Math 对象" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Math 对象
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../regexp/" class="md-footer__link md-footer__link--next" aria-label="Next: RegExp 对象" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              RegExp 对象
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

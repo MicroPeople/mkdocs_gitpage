@@ -1,0 +1,2832 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Location 对象，URL 对象，URLSearchParams 对象 - javascript-tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#location-url-urlsearchparams" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="javascript-tutorial" class="md-header__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            javascript-tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Location 对象，URL 对象，URLSearchParams 对象
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="javascript-tutorial" class="md-nav__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    javascript-tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          入门篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="入门篇" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          入门篇
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/introduction/" class="md-nav__link">
+        导论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/history/" class="md-nav__link">
+        历史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/grammar/" class="md-nav__link">
+        基本语法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据类型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/null-undefined-boolean/" class="md-nav__link">
+        null，undefined 和布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/number/" class="md-nav__link">
+        数值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/object/" class="md-nav__link">
+        对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/function/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/array/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="运算符" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/arithmetic/" class="md-nav__link">
+        算术运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/comparison/" class="md-nav__link">
+        比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/boolean/" class="md-nav__link">
+        布尔运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/bit/" class="md-nav__link">
+        二进制位运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/priority/" class="md-nav__link">
+        其他运算符，运算顺序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          语法专题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法专题" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          语法专题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/conversion/" class="md-nav__link">
+        数据类型的转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/error/" class="md-nav__link">
+        错误处理机制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/style/" class="md-nav__link">
+        编程风格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/console/" class="md-nav__link">
+        console 对象与控制台
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          标准库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="标准库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          标准库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/object/" class="md-nav__link">
+        Object 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/attributes/" class="md-nav__link">
+        属性描述对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/array/" class="md-nav__link">
+        Array 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/wrapper/" class="md-nav__link">
+        包装对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/boolean/" class="md-nav__link">
+        Boolean 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/number/" class="md-nav__link">
+        Number 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/string/" class="md-nav__link">
+        String 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/math/" class="md-nav__link">
+        Math 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/date/" class="md-nav__link">
+        Date 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/regexp/" class="md-nav__link">
+        RegExp 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/json/" class="md-nav__link">
+        JSON 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          面向对象编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="面向对象编程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          面向对象编程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/new/" class="md-nav__link">
+        实例对象与 new 命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/this/" class="md-nav__link">
+        this 关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/prototype/" class="md-nav__link">
+        对象的继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/object/" class="md-nav__link">
+        Object 对象的相关方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/strict/" class="md-nav__link">
+        严格模式
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          异步操作
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="异步操作" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          异步操作
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/timer/" class="md-nav__link">
+        定时器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/promise/" class="md-nav__link">
+        Promise 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          DOM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DOM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          DOM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/node/" class="md-nav__link">
+        Node 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/nodelist/" class="md-nav__link">
+        NodeList 接口，HTMLCollection 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/parentnode/" class="md-nav__link">
+        ParentNode 接口，ChildNode 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/document/" class="md-nav__link">
+        Document 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/element/" class="md-nav__link">
+        Element 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/attributes/" class="md-nav__link">
+        属性的操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/text/" class="md-nav__link">
+        Text 节点和 DocumentFragment 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/css/" class="md-nav__link">
+        CSS 操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dom/mutationobserver/" class="md-nav__link">
+        Mutation Observer API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          事件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="事件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          事件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/eventtarget/" class="md-nav__link">
+        EventTarget 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/model/" class="md-nav__link">
+        事件模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/event/" class="md-nav__link">
+        Event 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/mouse/" class="md-nav__link">
+        鼠标事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/keyboard/" class="md-nav__link">
+        键盘事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/progress/" class="md-nav__link">
+        进度事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/form/" class="md-nav__link">
+        表单事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/touch/" class="md-nav__link">
+        触摸事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/drag/" class="md-nav__link">
+        拖拉事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/common/" class="md-nav__link">
+        其他常见事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/globaleventhandlers/" class="md-nav__link">
+        GlobalEventHandlers 接口
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          浏览器模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="浏览器模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          浏览器模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../engine/" class="md-nav__link">
+        浏览器模型概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../window/" class="md-nav__link">
+        window 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigator/" class="md-nav__link">
+        Navigator 对象，Screen 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookie/" class="md-nav__link">
+        Cookie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xmlhttprequest/" class="md-nav__link">
+        XMLHttpRequest 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../same-origin/" class="md-nav__link">
+        同源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cors/" class="md-nav__link">
+        CORS 通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        Storage 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/" class="md-nav__link">
+        History 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Location 对象，URL 对象，URLSearchParams 对象
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Location 对象，URL 对象，URLSearchParams 对象
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#location" class="md-nav__link">
+    Location 对象
+  </a>
+  
+    <nav class="md-nav" aria-label="Location 对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL 的编码和解码
+  </a>
+  
+    <nav class="md-nav" aria-label="URL 的编码和解码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encodeuri" class="md-nav__link">
+    encodeURI()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encodeuricomponent" class="md-nav__link">
+    encodeURIComponent()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decodeuri" class="md-nav__link">
+    decodeURI()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decodeuricomponent" class="md-nav__link">
+    decodeURIComponent()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    URL 接口
+  </a>
+  
+    <nav class="md-nav" aria-label="URL 接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    构造函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    实例属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    静态方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urlsearchparams" class="md-nav__link">
+    URLSearchParams 对象
+  </a>
+  
+    <nav class="md-nav" aria-label="URLSearchParams 对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamstostring" class="md-nav__link">
+    URLSearchParams.toString()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsappend" class="md-nav__link">
+    URLSearchParams.append()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsdelete" class="md-nav__link">
+    URLSearchParams.delete()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamshas" class="md-nav__link">
+    URLSearchParams.has()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsset" class="md-nav__link">
+    URLSearchParams.set()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsgeturlsearchparamsgetall" class="md-nav__link">
+    URLSearchParams.get()，URLSearchParams.getAll()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamssort" class="md-nav__link">
+    URLSearchParams.sort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamskeysurlsearchparamsvaluesurlsearchparamsentries" class="md-nav__link">
+    URLSearchParams.keys()，URLSearchParams.values()，URLSearchParams.entries()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arraybuffer/" class="md-nav__link">
+        ArrayBuffer 对象，Blob 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file/" class="md-nav__link">
+        File 对象，FileList 对象，FileReader 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../form/" class="md-nav__link">
+        表单，FormData 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../indexeddb/" class="md-nav__link">
+        IndexedDB API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webworker/" class="md-nav__link">
+        Web Worker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          附录网页元素接口
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="附录网页元素接口" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          附录网页元素接口
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/a/" class="md-nav__link">
+        a
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/image/" class="md-nav__link">
+        img
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/form/" class="md-nav__link">
+        form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/input/" class="md-nav__link">
+        input
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/button/" class="md-nav__link">
+        button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/option/" class="md-nav__link">
+        option
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/video/" class="md-nav__link">
+        video & audio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#location" class="md-nav__link">
+    Location 对象
+  </a>
+  
+    <nav class="md-nav" aria-label="Location 对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL 的编码和解码
+  </a>
+  
+    <nav class="md-nav" aria-label="URL 的编码和解码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encodeuri" class="md-nav__link">
+    encodeURI()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encodeuricomponent" class="md-nav__link">
+    encodeURIComponent()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decodeuri" class="md-nav__link">
+    decodeURI()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decodeuricomponent" class="md-nav__link">
+    decodeURIComponent()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    URL 接口
+  </a>
+  
+    <nav class="md-nav" aria-label="URL 接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    构造函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    实例属性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    静态方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#urlsearchparams" class="md-nav__link">
+    URLSearchParams 对象
+  </a>
+  
+    <nav class="md-nav" aria-label="URLSearchParams 对象">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamstostring" class="md-nav__link">
+    URLSearchParams.toString()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsappend" class="md-nav__link">
+    URLSearchParams.append()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsdelete" class="md-nav__link">
+    URLSearchParams.delete()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamshas" class="md-nav__link">
+    URLSearchParams.has()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsset" class="md-nav__link">
+    URLSearchParams.set()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamsgeturlsearchparamsgetall" class="md-nav__link">
+    URLSearchParams.get()，URLSearchParams.getAll()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamssort" class="md-nav__link">
+    URLSearchParams.sort()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urlsearchparamskeysurlsearchparamsvaluesurlsearchparamsentries" class="md-nav__link">
+    URLSearchParams.keys()，URLSearchParams.values()，URLSearchParams.entries()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    参考链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="location-url-urlsearchparams">Location 对象，URL 对象，URLSearchParams 对象<a class="headerlink" href="#location-url-urlsearchparams" title="Permanent link">&para;</a></h1>
+<p>URL 是互联网的基础设施之一。浏览器提供了一些原生对象，用来管理 URL。</p>
+<h2 id="location">Location 对象<a class="headerlink" href="#location" title="Permanent link">&para;</a></h2>
+<p><code>Location</code>对象是浏览器提供的原生对象，提供 URL 相关的信息和操作方法。通过<code>window.location</code>和<code>document.location</code>属性，可以拿到这个对象。</p>
+<h3 id="_1">属性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><code>Location</code>对象提供以下属性。</p>
+<ul>
+<li><code>Location.href</code>：整个 URL。</li>
+<li><code>Location.protocol</code>：当前 URL 的协议，包括冒号（<code>:</code>）。</li>
+<li><code>Location.host</code>：主机。如果端口不是协议默认的<code>80</code>和<code>433</code>，则还会包括冒号（<code>:</code>）和端口。</li>
+<li><code>Location.hostname</code>：主机名，不包括端口。</li>
+<li><code>Location.port</code>：端口号。</li>
+<li><code>Location.pathname</code>：URL 的路径部分，从根路径<code>/</code>开始。</li>
+<li><code>Location.search</code>：查询字符串部分，从问号<code>?</code>开始。</li>
+<li><code>Location.hash</code>：片段字符串部分，从<code>#</code>开始。</li>
+<li><code>Location.username</code>：域名前面的用户名。</li>
+<li><code>Location.password</code>：域名前面的密码。</li>
+<li><code>Location.origin</code>：URL 的协议、主机名和端口。</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 当前网址为</span>
+<span class="c1">// http://user:passwd@www.example.com:4097/path/a.html?x=111#part1</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+<span class="c1">// &quot;http://user:passwd@www.example.com:4097/path/a.html?x=111#part1&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span>
+<span class="c1">// &quot;http:&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span>
+<span class="c1">// &quot;www.example.com:4097&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hostname</span>
+<span class="c1">// &quot;www.example.com&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">port</span>
+<span class="c1">// &quot;4097&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span>
+<span class="c1">// &quot;/path/a.html&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span>
+<span class="c1">// &quot;?x=111&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span>
+<span class="c1">// &quot;#part1&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">username</span>
+<span class="c1">// &quot;user&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">password</span>
+<span class="c1">// &quot;passwd&quot;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span>
+<span class="c1">// &quot;http://user:passwd@www.example.com:4097&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>这些属性里面，只有<code>origin</code>属性是只读的，其他属性都可写。</p>
+<p>注意，如果对<code>Location.href</code>写入新的 URL 地址，浏览器会立刻跳转到这个新地址。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 跳转到新网址</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">&#39;http://www.example.com&#39;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>这个特性常常用于让网页自动滚动到新的锚点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">&#39;#top&#39;</span><span class="p">;</span>
+<span class="c1">// 等同于</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="s1">&#39;#top&#39;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>直接改写<code>location</code>，相当于写入<code>href</code>属性。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s1">&#39;http://www.example.com&#39;</span><span class="p">;</span>
+<span class="c1">// 等同于</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">&#39;http://www.example.com&#39;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>另外，<code>Location.href</code>属性是浏览器唯一允许跨域写入的属性，即非同源的窗口可以改写另一个窗口（比如子窗口与父窗口）的<code>Location.href</code>属性，导致后者的网址跳转。<code>Location</code>的其他属性都不允许跨域写入。</p>
+<h3 id="_2">方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>（1）Location.assign()</strong></p>
+<p><code>assign</code>方法接受一个 URL 字符串作为参数，使得浏览器立刻跳转到新的 URL。如果参数不是有效的 URL 字符串，则会报错。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 跳转到新的网址</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（2）Location.replace()</strong></p>
+<p><code>replace</code>方法接受一个 URL 字符串作为参数，使得浏览器立刻跳转到新的 URL。如果参数不是有效的 URL 字符串，则会报错。</p>
+<p>它与<code>assign</code>方法的差异在于，<code>replace</code>会在浏览器的浏览历史<code>History</code>里面删除当前网址，也就是说，一旦使用了该方法，后退按钮就无法回到当前网页了，相当于在浏览历史里面，使用新的 URL 替换了老的 URL。它的一个应用是，当脚本发现当前是移动设备时，就立刻跳转到移动版网页。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 跳转到新的网址</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s1">&#39;http://www.example.com&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（3）Location.reload()</strong></p>
+<p><code>reload</code>方法使得浏览器重新加载当前网址，相当于按下浏览器的刷新按钮。</p>
+<p>它接受一个布尔值作为参数。如果参数为<code>true</code>，浏览器将向服务器重新请求这个网页，并且重新加载后，网页将滚动到头部（即<code>scrollTop === 0</code>）。如果参数是<code>false</code>或为空，浏览器将从本地缓存重新加载该网页，并且重新加载后，网页的视口位置是重新加载前的位置。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 向服务器重新请求当前网址</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p><strong>（4）Location.toString()</strong></p>
+<p><code>toString</code>方法返回整个 URL 字符串，相当于读取<code>Location.href</code>属性。</p>
+<h2 id="url">URL 的编码和解码<a class="headerlink" href="#url" title="Permanent link">&para;</a></h2>
+<p>网页的 URL 只能包含合法的字符。合法字符分成两类。</p>
+<ul>
+<li>URL 元字符：分号（<code>;</code>），逗号（<code>,</code>），斜杠（<code>/</code>），问号（<code>?</code>），冒号（<code>:</code>），at（<code>@</code>），<code>&amp;</code>，等号（<code>=</code>），加号（<code>+</code>），美元符号（<code>$</code>），井号（<code>#</code>）</li>
+<li>语义字符：<code>a-z</code>，<code>A-Z</code>，<code>0-9</code>，连词号（<code>-</code>），下划线（<code>_</code>），点（<code>.</code>），感叹号（<code>!</code>），波浪线（<code>~</code>），星号（<code>*</code>），单引号（<code>'</code>），圆括号（<code>()</code>）</li>
+</ul>
+<p>除了以上字符，其他字符出现在 URL 之中都必须转义，规则是根据操作系统的默认编码，将每个字节转为百分号（<code>%</code>）加上两个大写的十六进制字母。</p>
+<p>比如，UTF-8 的操作系统上，<code>http://www.example.com/q=春节</code>这个 URL 之中，汉字“春节”不是 URL 的合法字符，所以被浏览器自动转成<code>http://www.example.com/q=%E6%98%A5%E8%8A%82</code>。其中，“春”转成了<code>%E6%98%A5</code>，“节”转成了<code>%E8%8A%82</code>。这是因为“春”和“节”的 UTF-8 编码分别是<code>E6 98 A5</code>和<code>E8 8A 82</code>，将每个字节前面加上百分号，就构成了 URL 编码。</p>
+<p>JavaScript 提供四个 URL 的编码/解码方法。</p>
+<ul>
+<li><code>encodeURI()</code></li>
+<li><code>encodeURIComponent()</code></li>
+<li><code>decodeURI()</code></li>
+<li><code>decodeURIComponent()</code></li>
+</ul>
+<h3 id="encodeuri">encodeURI()<a class="headerlink" href="#encodeuri" title="Permanent link">&para;</a></h3>
+<p><code>encodeURI()</code>方法用于转码整个 URL。它的参数是一个字符串，代表整个 URL。它会将元字符和语义字符之外的字符，都进行转义。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">encodeURI</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/q=春节&#39;</span><span class="p">)</span>
+<span class="c1">// &quot;http://www.example.com/q=%E6%98%A5%E8%8A%82&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="encodeuricomponent">encodeURIComponent()<a class="headerlink" href="#encodeuricomponent" title="Permanent link">&para;</a></h3>
+<p><code>encodeURIComponent()</code>方法用于转码 URL 的组成部分，会转码除了语义字符之外的所有字符，即元字符也会被转码。所以，它不能用于转码整个 URL。它接受一个参数，就是 URL 的片段。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">encodeURIComponent</span><span class="p">(</span><span class="s1">&#39;春节&#39;</span><span class="p">)</span>
+<span class="c1">// &quot;%E6%98%A5%E8%8A%82&quot;</span>
+<span class="nb">encodeURIComponent</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/q=春节&#39;</span><span class="p">)</span>
+<span class="c1">// &quot;http%3A%2F%2Fwww.example.com%2Fq%3D%E6%98%A5%E8%8A%82&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>encodeURIComponent()</code>会连 URL 元字符一起转义，所以如果转码整个 URL 就会出错。</p>
+<h3 id="decodeuri">decodeURI()<a class="headerlink" href="#decodeuri" title="Permanent link">&para;</a></h3>
+<p><code>decodeURI()</code>方法用于整个 URL 的解码。它是<code>encodeURI()</code>方法的逆运算。它接受一个参数，就是转码后的 URL。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">decodeURI</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/q=%E6%98%A5%E8%8A%82&#39;</span><span class="p">)</span>
+<span class="c1">// &quot;http://www.example.com/q=春节&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="decodeuricomponent">decodeURIComponent()<a class="headerlink" href="#decodeuricomponent" title="Permanent link">&para;</a></h3>
+<p><code>decodeURIComponent()</code>用于URL 片段的解码。它是<code>encodeURIComponent()</code>方法的逆运算。它接受一个参数，就是转码后的 URL 片段。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">decodeURIComponent</span><span class="p">(</span><span class="s1">&#39;%E6%98%A5%E8%8A%82&#39;</span><span class="p">)</span>
+<span class="c1">// &quot;春节&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="url_1">URL 接口<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h2>
+<p>浏览器原生提供<code>URL()</code>接口，它是一个构造函数，用来构造、解析和编码 URL。一般情况下，通过<code>window.URL</code>可以拿到这个构造函数。</p>
+<h3 id="_3">构造函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><code>URL()</code>作为构造函数，可以生成 URL 实例。它接受一个表示 URL 的字符串作为参数。如果参数不是合法的 URL，会报错。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/index.html&#39;</span><span class="p">);</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">href</span>
+<span class="c1">// &quot;http://www.example.com/index.html&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面示例生成了一个 URL 实例，用来代表指定的网址。</p>
+<p>除了字符串，<code>URL()</code>的参数也可以是另一个 URL 实例。这时，<code>URL()</code>会自动读取该实例的<code>href</code>属性，作为实际参数。</p>
+<p>如果 URL 字符串是一个相对路径，那么需要表示绝对路径的第二个参数，作为计算基准。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">url1</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;index.html&#39;</span><span class="p">,</span> <span class="s1">&#39;http://example.com&#39;</span><span class="p">);</span>
+<span class="nx">url1</span><span class="p">.</span><span class="nx">href</span>
+<span class="c1">// &quot;http://example.com/index.html&quot;</span>
+
+<span class="kd">var</span> <span class="nx">url2</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;page2.html&#39;</span><span class="p">,</span> <span class="s1">&#39;http://example.com/page1.html&#39;</span><span class="p">);</span>
+<span class="nx">url2</span><span class="p">.</span><span class="nx">href</span>
+<span class="c1">// &quot;http://example.com/page2.html&quot;</span>
+
+<span class="kd">var</span> <span class="nx">url3</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;http://example.com/a/b.html&#39;</span><span class="p">)</span>
+<span class="nx">url3</span><span class="p">.</span><span class="nx">href</span>
+<span class="c1">// &quot;http://example.com/&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，返回的 URL 实例的路径都是在第二个参数的基础上，切换到第一个参数得到的。最后一个例子里面，第一个参数是<code>..</code>，表示上层路径。</p>
+<h3 id="_4">实例属性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>URL 实例的属性与<code>Location</code>对象的属性基本一致，返回当前 URL 的信息。</p>
+<ul>
+<li>URL.href：返回整个 URL</li>
+<li>URL.protocol：返回协议，以冒号<code>:</code>结尾</li>
+<li>URL.hostname：返回域名</li>
+<li>URL.host：返回域名与端口，包含<code>:</code>号，默认的80和443端口会省略</li>
+<li>URL.port：返回端口</li>
+<li>URL.origin：返回协议、域名和端口</li>
+<li>URL.pathname：返回路径，以斜杠<code>/</code>开头</li>
+<li>URL.search：返回查询字符串，以问号<code>?</code>开头</li>
+<li>URL.searchParams：返回一个<code>URLSearchParams</code>实例，该属性是<code>Location</code>对象没有的</li>
+<li>URL.hash：返回片段识别符，以井号<code>#</code>开头</li>
+<li>URL.password：返回域名前面的密码</li>
+<li>URL.username：返回域名前面的用户名</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;http://user:passwd@www.example.com:4097/path/a.html?x=111#part1&#39;</span><span class="p">);</span>
+
+<span class="nx">url</span><span class="p">.</span><span class="nx">href</span>
+<span class="c1">// &quot;http://user:passwd@www.example.com:4097/path/a.html?x=111#part1&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">protocol</span>
+<span class="c1">// &quot;http:&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">hostname</span>
+<span class="c1">// &quot;www.example.com&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">host</span>
+<span class="c1">// &quot;www.example.com:4097&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">port</span>
+<span class="c1">// &quot;4097&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">origin</span>
+<span class="c1">// &quot;http://www.example.com:4097&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span>
+<span class="c1">// &quot;/path/a.html&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">search</span>
+<span class="c1">// &quot;?x=111&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span>
+<span class="c1">// URLSearchParams {}</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">hash</span>
+<span class="c1">// &quot;#part1&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">password</span>
+<span class="c1">// &quot;passwd&quot;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">username</span>
+<span class="c1">// &quot;user&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>这些属性里面，只有<code>origin</code>属性是只读的，其他属性都可写，并且会立即生效。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;http://example.com/index.html#part1&#39;</span><span class="p">);</span>
+
+<span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">=</span> <span class="s1">&#39;index2.html&#39;</span><span class="p">;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">href</span> <span class="c1">// &quot;http://example.com/index2.html#part1&quot;</span>
+
+<span class="nx">url</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="s1">&#39;#part2&#39;</span><span class="p">;</span>
+<span class="nx">url</span><span class="p">.</span><span class="nx">href</span> <span class="c1">// &quot;http://example.com/index2.html#part2&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，改变 URL 实例的<code>pathname</code>属性和<code>hash</code>属性，都会实时反映在 URL 实例当中。</p>
+<h3 id="_5">静态方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>（1）URL.createObjectURL()</strong></p>
+<p><code>URL.createObjectURL()</code>方法用来为上传/下载的文件、流媒体文件生成一个 URL 字符串。这个字符串代表了<code>File</code>对象或<code>Blob</code>对象的 URL。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;div id=&quot;display&quot;/&gt;</span>
+<span class="c1">// &lt;input</span>
+<span class="c1">//   type=&quot;file&quot;</span>
+<span class="c1">//   id=&quot;fileElem&quot;</span>
+<span class="c1">//   multiple</span>
+<span class="c1">//   accept=&quot;image/*&quot;</span>
+<span class="c1">//   onchange=&quot;handleFiles(this.files)&quot;</span>
+<span class="c1">//  &gt;</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;display&#39;</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">handleFiles</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">files</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">files</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="nx">div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>URL.createObjectURL()</code>方法用来为上传的文件生成一个 URL 字符串，作为<code>&lt;img&gt;</code>元素的图片来源。</p>
+<p>该方法生成的 URL 就像下面的样子。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">blob</span><span class="o">:</span><span class="nx">http</span><span class="o">:</span><span class="c1">//localhost/c745ef73-ece9-46da-8f66-ebes574789b1</span>
+</code></pre></div>
+</td></tr></table>
+<p>注意，每次使用<code>URL.createObjectURL()</code>方法，都会在内存里面生成一个 URL 实例。如果不再需要该方法生成的 URL 字符串，为了节省内存，可以使用<code>URL.revokeObjectURL()</code>方法释放这个实例。</p>
+<p><strong>（2）URL.revokeObjectURL()</strong></p>
+<p><code>URL.revokeObjectURL()</code>方法用来释放<code>URL.createObjectURL()</code>方法生成的 URL 实例。它的参数就是<code>URL.createObjectURL()</code>方法返回的 URL 字符串。</p>
+<p>下面为上一段的示例加上<code>URL.revokeObjectURL()</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;display&#39;</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">handleFiles</span><span class="p">(</span><span class="nx">files</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">files</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">img</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">files</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="nx">div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">img</span><span class="p">);</span>
+    <span class="nx">img</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">revokeObjectURL</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，一旦图片加载成功以后，为本地文件生成的 URL 字符串就没用了，于是可以在<code>img.onload</code>回调函数里面，通过<code>URL.revokeObjectURL()</code>方法卸载这个 URL 实例。</p>
+<h2 id="urlsearchparams">URLSearchParams 对象<a class="headerlink" href="#urlsearchparams" title="Permanent link">&para;</a></h2>
+<h3 id="_6">概述<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><code>URLSearchParams</code>对象是浏览器的原生对象，用来构造、解析和处理 URL 的查询字符串（即 URL 问号后面的部分）。</p>
+<p>它本身也是一个构造函数，可以生成实例。参数可以为查询字符串，起首的问号<code>?</code>有没有都行，也可以是对应查询字符串的数组或对象。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 方法一：传入字符串</span>
+<span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;?foo=1&amp;bar=2&#39;</span><span class="p">);</span>
+<span class="c1">// 等同于</span>
+<span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+
+<span class="c1">// 方法二：传入数组</span>
+<span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">([[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mf">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mf">2</span><span class="p">]]);</span>
+
+<span class="c1">// 方法三：传入对象</span>
+<span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span> <span class="o">:</span> <span class="mf">1</span> <span class="p">,</span> <span class="s1">&#39;bar&#39;</span> <span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>URLSearchParams</code>会对查询字符串自动编码。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">});</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=%E4%BD%A0%E5%A5%BD&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>foo</code>的值是汉字，<code>URLSearchParams</code>对其自动进行 URL 编码。</p>
+<p>浏览器向服务器发送表单数据时，可以直接使用<code>URLSearchParams</code>实例作为表单数据。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="nx">bar</span><span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://example.com/api&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+  <span class="nx">body</span><span class="o">:</span> <span class="nx">params</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(...)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>fetch</code>命令向服务器发送命令时，可以直接使用<code>URLSearchParams</code>实例。</p>
+<p><code>URLSearchParams</code>可以与<code>URL()</code>接口结合使用。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="s1">&#39;somedefault&#39;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，URL 实例的<code>searchParams</code>属性就是一个<code>URLSearchParams</code>实例，所以可以使用<code>URLSearchParams</code>接口的<code>get</code>方法。</p>
+<p><code>URLSearchParams</code>实例有遍历器接口，可以用<code>for...of</code>循环遍历（详见《ES6 标准入门》的《Iterator》一章）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="mf">1</span> <span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">of</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nx">p</span><span class="p">[</span><span class="mf">1</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="c1">// foo: 1</span>
+<span class="c1">// bar: 2</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>URLSearchParams</code>没有实例属性，只有实例方法。</p>
+<h3 id="urlsearchparamstostring">URLSearchParams.toString()<a class="headerlink" href="#urlsearchparamstostring" title="Permanent link">&para;</a></h3>
+<p><code>toString</code>方法返回实例的字符串形式。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s1">&#39;https://example.com?foo=1&amp;bar=2&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=1&amp;bar=2&#39;</span>
+</code></pre></div>
+</td></tr></table>
+<p>那么需要字符串的场合，会自动调用<code>toString</code>方法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="nx">version</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">});</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">+</span> <span class="s1">&#39;?&#39;</span> <span class="o">+</span> <span class="nx">params</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>location.href</code>赋值时，可以直接使用<code>params</code>对象。这时就会自动调用<code>toString</code>方法。</p>
+<h3 id="urlsearchparamsappend">URLSearchParams.append()<a class="headerlink" href="#urlsearchparamsappend" title="Permanent link">&para;</a></h3>
+<p><code>append()</code>方法用来追加一个查询参数。它接受两个参数，第一个为键名，第二个为键值，没有返回值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="mf">1</span> <span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="mf">3</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=1&amp;bar=2&amp;baz=3&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>append()</code>方法不会识别是否键名已经存在。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="mf">1</span> <span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mf">3</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=1&amp;bar=2&amp;foo=3&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，查询字符串里面<code>foo</code>已经存在了，但是<code>append</code>依然会追加一个同名键。</p>
+<h3 id="urlsearchparamsdelete">URLSearchParams.delete()<a class="headerlink" href="#urlsearchparamsdelete" title="Permanent link">&para;</a></h3>
+<p><code>delete()</code>方法用来删除指定的查询参数。它接受键名作为参数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="mf">1</span> <span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+<span class="nx">params</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=1&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="urlsearchparamshas">URLSearchParams.has()<a class="headerlink" href="#urlsearchparamshas" title="Permanent link">&para;</a></h3>
+<p><code>has()</code>方法返回一个布尔值，表示查询字符串是否包含指定的键名。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="mf">1</span> <span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="o">:</span> <span class="mf">2</span><span class="p">});</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span> <span class="c1">// false</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="urlsearchparamsset">URLSearchParams.set()<a class="headerlink" href="#urlsearchparamsset" title="Permanent link">&para;</a></h3>
+<p><code>set()</code>方法用来设置查询字符串的键值。</p>
+<p>它接受两个参数，第一个是键名，第二个是键值。如果是已经存在的键，键值会被改写，否则会被追加。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;?foo=1&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=2&quot;</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mf">3</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=2&amp;bar=3&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>foo</code>是已经存在的键，<code>bar</code>是还不存在的键。</p>
+<p>如果有多个的同名键，<code>set</code>会移除现存所有的键。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;?foo=1&amp;foo=2&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mf">3</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;foo=3&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>下面是一个替换当前 URL 的例子。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// URL: https://example.com?version=1.0</span>
+<span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;version&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">);</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">replaceState</span><span class="p">({},</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">+</span> <span class="sb">`?`</span> <span class="o">+</span> <span class="nx">params</span><span class="p">);</span>
+<span class="c1">// URL: https://example.com?version=2.0</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="urlsearchparamsgeturlsearchparamsgetall">URLSearchParams.get()，URLSearchParams.getAll()<a class="headerlink" href="#urlsearchparamsgeturlsearchparamsgetall" title="Permanent link">&para;</a></h3>
+<p><code>get()</code>方法用来读取查询字符串里面的指定键。它接受键名作为参数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;?foo=1&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="c1">// &quot;1&quot;</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="c1">// null</span>
+</code></pre></div>
+</td></tr></table>
+<p>两个地方需要注意。第一，它返回的是字符串，如果原始值是数值，需要转一下类型；第二，如果指定的键名不存在，返回值是<code>null</code>。</p>
+<p>如果有多个的同名键，<code>get</code>返回位置最前面的那个键值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;?foo=3&amp;foo=2&amp;foo=1&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="c1">// &quot;3&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，查询字符串有三个<code>foo</code>键，<code>get</code>方法返回最前面的键值<code>3</code>。</p>
+<p><code>getAll()</code>方法返回一个数组，成员是指定键的所有键值。它接受键名作为参数。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;?foo=1&amp;foo=2&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">getAll</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="c1">// [&quot;1&quot;, &quot;2&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，查询字符串有两个<code>foo</code>键，<code>getAll</code>返回的数组就有两个成员。</p>
+<h3 id="urlsearchparamssort">URLSearchParams.sort()<a class="headerlink" href="#urlsearchparamssort" title="Permanent link">&para;</a></h3>
+<p><code>sort()</code>方法对查询字符串里面的键进行排序，规则是按照 Unicode 码点从小到大排列。</p>
+<p>该方法没有返回值，或者说返回值是<code>undefined</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;c=4&amp;a=2&amp;b=3&amp;a=1&#39;</span><span class="p">);</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+<span class="nx">params</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="c1">// &quot;a=2&amp;a=1&amp;b=3&amp;c=4&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，如果有两个同名的键<code>a</code>，它们之间不会排序，而是保留原始的顺序。</p>
+<h3 id="urlsearchparamskeysurlsearchparamsvaluesurlsearchparamsentries">URLSearchParams.keys()，URLSearchParams.values()，URLSearchParams.entries()<a class="headerlink" href="#urlsearchparamskeysurlsearchparamsvaluesurlsearchparamsentries" title="Permanent link">&para;</a></h3>
+<p>这三个方法都返回一个遍历器对象，供<code>for...of</code>循环遍历。它们的区别在于，<code>keys</code>方法返回的是键名的遍历器，<code>values</code>方法返回的是键值的遍历器，<code>entries</code>返回的是键值对的遍历器。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">params</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">URLSearchParams</span><span class="p">(</span><span class="s1">&#39;a=1&amp;b=2&#39;</span><span class="p">);</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">of</span> <span class="nx">params</span><span class="p">.</span><span class="nx">keys</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// a</span>
+<span class="c1">// b</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">of</span> <span class="nx">params</span><span class="p">.</span><span class="nx">values</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">of</span> <span class="nx">params</span><span class="p">.</span><span class="nx">entries</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// [&quot;a&quot;, &quot;1&quot;]</span>
+<span class="c1">// [&quot;b&quot;, &quot;2&quot;]</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果直接对<code>URLSearchParams</code>进行遍历，其实内部调用的就是<code>entries</code>接口。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">of</span> <span class="nx">params</span><span class="p">)</span> <span class="p">{}</span>
+<span class="c1">// 等同于</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">of</span> <span class="nx">params</span><span class="p">.</span><span class="nx">entries</span><span class="p">())</span> <span class="p">{}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="_7">参考链接<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location">Location</a>, by MDN</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL">URL</a>, by MDN</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">URLSearchParams</a>, by MDN</li>
+<li><a href="https://developers.google.com/web/updates/2016/01/urlsearchparams?hl=en">Easy URL Manipulation with URLSearchParams</a>, by Eric Bidelman</li>
+</ul>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../history/" class="md-footer__link md-footer__link--prev" aria-label="Previous: History 对象" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              History 对象
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../arraybuffer/" class="md-footer__link md-footer__link--next" aria-label="Next: ArrayBuffer 对象，Blob 对象" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ArrayBuffer 对象，Blob 对象
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

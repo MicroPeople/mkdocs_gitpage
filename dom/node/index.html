@@ -1,0 +1,2797 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Node 接口 - javascript-tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#node" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="javascript-tutorial" class="md-header__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            javascript-tutorial
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Node 接口
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="javascript-tutorial" class="md-nav__button md-logo" aria-label="javascript-tutorial" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    javascript-tutorial
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          入门篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="入门篇" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          入门篇
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/introduction/" class="md-nav__link">
+        导论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/history/" class="md-nav__link">
+        历史
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basic/grammar/" class="md-nav__link">
+        基本语法
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          数据类型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="数据类型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据类型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/null-undefined-boolean/" class="md-nav__link">
+        null，undefined 和布尔值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/number/" class="md-nav__link">
+        数值
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/string/" class="md-nav__link">
+        字符串
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/object/" class="md-nav__link">
+        对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/function/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../types/array/" class="md-nav__link">
+        数组
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          运算符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="运算符" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          运算符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/arithmetic/" class="md-nav__link">
+        算术运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/comparison/" class="md-nav__link">
+        比较运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/boolean/" class="md-nav__link">
+        布尔运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/bit/" class="md-nav__link">
+        二进制位运算符
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operators/priority/" class="md-nav__link">
+        其他运算符，运算顺序
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          语法专题
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="语法专题" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          语法专题
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/conversion/" class="md-nav__link">
+        数据类型的转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/error/" class="md-nav__link">
+        错误处理机制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/style/" class="md-nav__link">
+        编程风格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../features/console/" class="md-nav__link">
+        console 对象与控制台
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          标准库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="标准库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          标准库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/object/" class="md-nav__link">
+        Object 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/attributes/" class="md-nav__link">
+        属性描述对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/array/" class="md-nav__link">
+        Array 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/wrapper/" class="md-nav__link">
+        包装对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/boolean/" class="md-nav__link">
+        Boolean 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/number/" class="md-nav__link">
+        Number 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/string/" class="md-nav__link">
+        String 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/math/" class="md-nav__link">
+        Math 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/date/" class="md-nav__link">
+        Date 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/regexp/" class="md-nav__link">
+        RegExp 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stdlib/json/" class="md-nav__link">
+        JSON 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          面向对象编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="面向对象编程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          面向对象编程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/new/" class="md-nav__link">
+        实例对象与 new 命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/this/" class="md-nav__link">
+        this 关键字
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/prototype/" class="md-nav__link">
+        对象的继承
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/object/" class="md-nav__link">
+        Object 对象的相关方法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oop/strict/" class="md-nav__link">
+        严格模式
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          异步操作
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="异步操作" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          异步操作
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/timer/" class="md-nav__link">
+        定时器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../async/promise/" class="md-nav__link">
+        Promise 对象
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          DOM
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="DOM" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          DOM
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../general/" class="md-nav__link">
+        概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Node 接口
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Node 接口
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    属性
+  </a>
+  
+    <nav class="md-nav" aria-label="属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenodetype" class="md-nav__link">
+    Node.prototype.nodeType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenodename" class="md-nav__link">
+    Node.prototype.nodeName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenodevalue" class="md-nav__link">
+    Node.prototype.nodeValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypetextcontent" class="md-nav__link">
+    Node.prototype.textContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypebaseuri" class="md-nav__link">
+    Node.prototype.baseURI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeownerdocument" class="md-nav__link">
+    Node.prototype.ownerDocument
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenextsibling" class="md-nav__link">
+    Node.prototype.nextSibling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeprevioussibling" class="md-nav__link">
+    Node.prototype.previousSibling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeparentnode" class="md-nav__link">
+    Node.prototype.parentNode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeparentelement" class="md-nav__link">
+    Node.prototype.parentElement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypefirstchildnodeprototypelastchild" class="md-nav__link">
+    Node.prototype.firstChild，Node.prototype.lastChild
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypechildnodes" class="md-nav__link">
+    Node.prototype.childNodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeisconnected" class="md-nav__link">
+    Node.prototype.isConnected
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    方法
+  </a>
+  
+    <nav class="md-nav" aria-label="方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeappendchild" class="md-nav__link">
+    Node.prototype.appendChild()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypehaschildnodes" class="md-nav__link">
+    Node.prototype.hasChildNodes()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeclonenode" class="md-nav__link">
+    Node.prototype.cloneNode()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeinsertbefore" class="md-nav__link">
+    Node.prototype.insertBefore()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototyperemovechild" class="md-nav__link">
+    Node.prototype.removeChild()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypereplacechild" class="md-nav__link">
+    Node.prototype.replaceChild()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypecontains" class="md-nav__link">
+    Node.prototype.contains()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypecomparedocumentposition" class="md-nav__link">
+    Node.prototype.compareDocumentPosition()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeisequalnodenodeprototypeissamenode" class="md-nav__link">
+    Node.prototype.isEqualNode()，Node.prototype.isSameNode()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenormalize" class="md-nav__link">
+    Node.prototype.normalize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypegetrootnode" class="md-nav__link">
+    Node.prototype.getRootNode()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodelist/" class="md-nav__link">
+        NodeList 接口，HTMLCollection 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parentnode/" class="md-nav__link">
+        ParentNode 接口，ChildNode 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../document/" class="md-nav__link">
+        Document 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../element/" class="md-nav__link">
+        Element 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attributes/" class="md-nav__link">
+        属性的操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../text/" class="md-nav__link">
+        Text 节点和 DocumentFragment 节点
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        CSS 操作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mutationobserver/" class="md-nav__link">
+        Mutation Observer API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          事件
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="事件" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          事件
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/eventtarget/" class="md-nav__link">
+        EventTarget 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/model/" class="md-nav__link">
+        事件模型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/event/" class="md-nav__link">
+        Event 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/mouse/" class="md-nav__link">
+        鼠标事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/keyboard/" class="md-nav__link">
+        键盘事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/progress/" class="md-nav__link">
+        进度事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/form/" class="md-nav__link">
+        表单事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/touch/" class="md-nav__link">
+        触摸事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/drag/" class="md-nav__link">
+        拖拉事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/common/" class="md-nav__link">
+        其他常见事件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/globaleventhandlers/" class="md-nav__link">
+        GlobalEventHandlers 接口
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          浏览器模型
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="浏览器模型" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          浏览器模型
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/engine/" class="md-nav__link">
+        浏览器模型概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/window/" class="md-nav__link">
+        window 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/navigator/" class="md-nav__link">
+        Navigator 对象，Screen 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cookie/" class="md-nav__link">
+        Cookie
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/xmlhttprequest/" class="md-nav__link">
+        XMLHttpRequest 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/same-origin/" class="md-nav__link">
+        同源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/cors/" class="md-nav__link">
+        CORS 通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/storage/" class="md-nav__link">
+        Storage 接口
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/history/" class="md-nav__link">
+        History 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/location/" class="md-nav__link">
+        Location 对象，URL 对象，URLSearchParams 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/arraybuffer/" class="md-nav__link">
+        ArrayBuffer 对象，Blob 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/file/" class="md-nav__link">
+        File 对象，FileList 对象，FileReader 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/form/" class="md-nav__link">
+        表单，FormData 对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/indexeddb/" class="md-nav__link">
+        IndexedDB API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bom/webworker/" class="md-nav__link">
+        Web Worker
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          附录网页元素接口
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="附录网页元素接口" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          附录网页元素接口
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/a/" class="md-nav__link">
+        a
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/image/" class="md-nav__link">
+        img
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/form/" class="md-nav__link">
+        form
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/input/" class="md-nav__link">
+        input
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/button/" class="md-nav__link">
+        button
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/option/" class="md-nav__link">
+        option
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../elements/video/" class="md-nav__link">
+        video & audio
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    属性
+  </a>
+  
+    <nav class="md-nav" aria-label="属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenodetype" class="md-nav__link">
+    Node.prototype.nodeType
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenodename" class="md-nav__link">
+    Node.prototype.nodeName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenodevalue" class="md-nav__link">
+    Node.prototype.nodeValue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypetextcontent" class="md-nav__link">
+    Node.prototype.textContent
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypebaseuri" class="md-nav__link">
+    Node.prototype.baseURI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeownerdocument" class="md-nav__link">
+    Node.prototype.ownerDocument
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenextsibling" class="md-nav__link">
+    Node.prototype.nextSibling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeprevioussibling" class="md-nav__link">
+    Node.prototype.previousSibling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeparentnode" class="md-nav__link">
+    Node.prototype.parentNode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeparentelement" class="md-nav__link">
+    Node.prototype.parentElement
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypefirstchildnodeprototypelastchild" class="md-nav__link">
+    Node.prototype.firstChild，Node.prototype.lastChild
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypechildnodes" class="md-nav__link">
+    Node.prototype.childNodes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeisconnected" class="md-nav__link">
+    Node.prototype.isConnected
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    方法
+  </a>
+  
+    <nav class="md-nav" aria-label="方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeappendchild" class="md-nav__link">
+    Node.prototype.appendChild()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypehaschildnodes" class="md-nav__link">
+    Node.prototype.hasChildNodes()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeclonenode" class="md-nav__link">
+    Node.prototype.cloneNode()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeinsertbefore" class="md-nav__link">
+    Node.prototype.insertBefore()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototyperemovechild" class="md-nav__link">
+    Node.prototype.removeChild()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypereplacechild" class="md-nav__link">
+    Node.prototype.replaceChild()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypecontains" class="md-nav__link">
+    Node.prototype.contains()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypecomparedocumentposition" class="md-nav__link">
+    Node.prototype.compareDocumentPosition()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypeisequalnodenodeprototypeissamenode" class="md-nav__link">
+    Node.prototype.isEqualNode()，Node.prototype.isSameNode()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypenormalize" class="md-nav__link">
+    Node.prototype.normalize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprototypegetrootnode" class="md-nav__link">
+    Node.prototype.getRootNode()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+<h1 id="node">Node 接口<a class="headerlink" href="#node" title="Permanent link">&para;</a></h1>
+<p>所有 DOM 节点对象都继承了 Node 接口，拥有一些共同的属性和方法。这是 DOM 操作的基础。</p>
+<h2 id="_1">属性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="nodeprototypenodetype">Node.prototype.nodeType<a class="headerlink" href="#nodeprototypenodetype" title="Permanent link">&para;</a></h3>
+<p><code>nodeType</code>属性返回一个整数值，表示节点的类型。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">nodeType</span> <span class="c1">// 9</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，文档节点的类型值为9。</p>
+<p>Node 对象定义了几个常量，对应这些类型值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">DOCUMENT_NODE</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，文档节点的<code>nodeType</code>属性等于常量<code>Node.DOCUMENT_NODE</code>。</p>
+<p>不同节点的<code>nodeType</code>属性值和对应的常量如下。</p>
+<ul>
+<li>文档节点（document）：9，对应常量<code>Node.DOCUMENT_NODE</code></li>
+<li>元素节点（element）：1，对应常量<code>Node.ELEMENT_NODE</code></li>
+<li>属性节点（attr）：2，对应常量<code>Node.ATTRIBUTE_NODE</code></li>
+<li>文本节点（text）：3，对应常量<code>Node.TEXT_NODE</code></li>
+<li>文档片断节点（DocumentFragment）：11，对应常量<code>Node.DOCUMENT_FRAGMENT_NODE</code></li>
+<li>文档类型节点（DocumentType）：10，对应常量<code>Node.DOCUMENT_TYPE_NODE</code></li>
+<li>注释节点（Comment）：8，对应常量<code>Node.COMMENT_NODE</code></li>
+</ul>
+<p>确定节点类型时，使用<code>nodeType</code>属性是常用方法。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">nodeType</span> <span class="o">===</span> <span class="nx">Node</span><span class="p">.</span><span class="nx">ELEMENT_NODE</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;该节点是元素节点&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="nodeprototypenodename">Node.prototype.nodeName<a class="headerlink" href="#nodeprototypenodename" title="Permanent link">&para;</a></h3>
+<p><code>nodeName</code>属性返回节点的名称。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;div id=&quot;d1&quot;&gt;hello world&lt;/div&gt;</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;d1&#39;</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">nodeName</span> <span class="c1">// &quot;DIV&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，元素节点<code>&lt;div&gt;</code>的<code>nodeName</code>属性就是大写的标签名<code>DIV</code>。</p>
+<p>不同节点的<code>nodeName</code>属性值如下。</p>
+<ul>
+<li>文档节点（document）：<code>#document</code></li>
+<li>元素节点（element）：大写的标签名</li>
+<li>属性节点（attr）：属性的名称</li>
+<li>文本节点（text）：<code>#text</code></li>
+<li>文档片断节点（DocumentFragment）：<code>#document-fragment</code></li>
+<li>文档类型节点（DocumentType）：文档的类型</li>
+<li>注释节点（Comment）：<code>#comment</code></li>
+</ul>
+<h3 id="nodeprototypenodevalue">Node.prototype.nodeValue<a class="headerlink" href="#nodeprototypenodevalue" title="Permanent link">&para;</a></h3>
+<p><code>nodeValue</code>属性返回一个字符串，表示当前节点本身的文本值，该属性可读写。</p>
+<p>只有文本节点（text）、注释节点（comment）和属性节点（attr）有文本值，因此这三类节点的<code>nodeValue</code>可以返回结果，其他类型的节点一律返回<code>null</code>。同样的，也只有这三类节点可以设置<code>nodeValue</code>属性的值，其他类型的节点设置无效。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;div id=&quot;d1&quot;&gt;hello world&lt;/div&gt;</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;d1&#39;</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">nodeValue</span> <span class="c1">// null</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">nodeValue</span> <span class="c1">// &quot;hello world&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>div</code>是元素节点，<code>nodeValue</code>属性返回<code>null</code>。<code>div.firstChild</code>是文本节点，所以可以返回文本值。</p>
+<h3 id="nodeprototypetextcontent">Node.prototype.textContent<a class="headerlink" href="#nodeprototypetextcontent" title="Permanent link">&para;</a></h3>
+<p><code>textContent</code>属性返回当前节点和它的所有后代节点的文本内容。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码为</span>
+<span class="c1">// &lt;div id=&quot;divA&quot;&gt;This is &lt;span&gt;some&lt;/span&gt; text&lt;/div&gt;</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;divA&#39;</span><span class="p">).</span><span class="nx">textContent</span>
+<span class="c1">// This is some text</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>textContent</code>属性自动忽略当前节点内部的 HTML 标签，返回所有文本内容。</p>
+<p>该属性是可读写的，设置该属性的值，会用一个新的文本节点，替换所有原来的子节点。它还有一个好处，就是自动对 HTML 标签转义。这很适合用于用户提供的内容。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">).</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s1">&#39;&lt;p&gt;GoodBye!&lt;/p&gt;&#39;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码在插入文本时，会将<code>&lt;p&gt;</code>标签解释为文本，而不会当作标签处理。</p>
+<p>对于文本节点（text）、注释节点（comment）和属性节点（attr），<code>textContent</code>属性的值与<code>nodeValue</code>属性相同。对于其他类型的节点，该属性会将每个子节点（不包括注释节点）的内容连接在一起返回。如果一个节点没有子节点，则返回空字符串。</p>
+<p>文档节点（document）和文档类型节点（doctype）的<code>textContent</code>属性为<code>null</code>。如果要读取整个文档的内容，可以使用<code>document.documentElement.textContent</code>。</p>
+<h3 id="nodeprototypebaseuri">Node.prototype.baseURI<a class="headerlink" href="#nodeprototypebaseuri" title="Permanent link">&para;</a></h3>
+<p><code>baseURI</code>属性返回一个字符串，表示当前网页的绝对路径。浏览器根据这个属性，计算网页上的相对路径的 URL。该属性为只读。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// 当前网页的网址为</span>
+<span class="c1">// http://www.example.com/index.html</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">baseURI</span>
+<span class="c1">// &quot;http://www.example.com/index.html&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>如果无法读到网页的 URL，<code>baseURI</code>属性返回<code>null</code>。</p>
+<p>该属性的值一般由当前网址的 URL（即<code>window.location</code>属性）决定，但是可以使用 HTML 的<code>&lt;base&gt;</code>标签，改变该属性的值。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://www.example.com/page.html&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
+<p>设置了以后，<code>baseURI</code>属性就返回<code>&lt;base&gt;</code>标签设置的值。</p>
+<h3 id="nodeprototypeownerdocument">Node.prototype.ownerDocument<a class="headerlink" href="#nodeprototypeownerdocument" title="Permanent link">&para;</a></h3>
+<p><code>Node.ownerDocument</code>属性返回当前节点所在的顶层文档对象，即<code>document</code>对象。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">ownerDocument</span><span class="p">;</span>
+<span class="nx">d</span> <span class="o">===</span> <span class="nb">document</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>document</code>对象本身的<code>ownerDocument</code>属性，返回<code>null</code>。</p>
+<h3 id="nodeprototypenextsibling">Node.prototype.nextSibling<a class="headerlink" href="#nodeprototypenextsibling" title="Permanent link">&para;</a></h3>
+<p><code>Node.nextSibling</code>属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回<code>null</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;div id=&quot;d1&quot;&gt;hello&lt;/div&gt;&lt;div id=&quot;d2&quot;&gt;world&lt;/div&gt;</span>
+<span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;d1&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">d2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;d2&#39;</span><span class="p">);</span>
+
+<span class="nx">d1</span><span class="p">.</span><span class="nx">nextSibling</span> <span class="o">===</span> <span class="nx">d2</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>d1.nextSibling</code>就是紧跟在<code>d1</code>后面的同级节点<code>d2</code>。</p>
+<p>注意，该属性还包括文本节点和注释节点（<code>&lt;!-- comment --&gt;</code>）。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。</p>
+<p><code>nextSibling</code>属性可以用来遍历所有子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;div1&#39;</span><span class="p">).</span><span class="nx">firstChild</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">el</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">el</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">);</span>
+  <span class="nx">el</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">nextSibling</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码遍历<code>div1</code>节点的所有子节点。</p>
+<h3 id="nodeprototypeprevioussibling">Node.prototype.previousSibling<a class="headerlink" href="#nodeprototypeprevioussibling" title="Permanent link">&para;</a></h3>
+<p><code>previousSibling</code>属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回<code>null</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;div id=&quot;d1&quot;&gt;hello&lt;/div&gt;&lt;div id=&quot;d2&quot;&gt;world&lt;/div&gt;</span>
+<span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;d1&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">d2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;d2&#39;</span><span class="p">);</span>
+
+<span class="nx">d2</span><span class="p">.</span><span class="nx">previousSibling</span> <span class="o">===</span> <span class="nx">d1</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>d2.previousSibling</code>就是<code>d2</code>前面的同级节点<code>d1</code>。</p>
+<p>注意，该属性还包括文本节点和注释节点。因此如果当前节点前面有空格，该属性会返回一个文本节点，内容为空格。</p>
+<h3 id="nodeprototypeparentnode">Node.prototype.parentNode<a class="headerlink" href="#nodeprototypeparentnode" title="Permanent link">&para;</a></h3>
+<p><code>parentNode</code>属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：元素节点（element）、文档节点（document）和文档片段节点（documentfragment）。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">node</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，通过<code>node.parentNode</code>属性将<code>node</code>节点从文档里面移除。</p>
+<p>文档节点（document）和文档片段节点（documentfragment）的父节点都是<code>null</code>。另外，对于那些生成后还没插入 DOM 树的节点，父节点也是<code>null</code>。</p>
+<h3 id="nodeprototypeparentelement">Node.prototype.parentElement<a class="headerlink" href="#nodeprototypeparentelement" title="Permanent link">&para;</a></h3>
+<p><code>parentElement</code>属性返回当前节点的父元素节点。如果当前节点没有父节点，或者父节点类型不是元素节点，则返回<code>null</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">node</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，父元素节点的样式设定了红色。</p>
+<p>由于父节点只可能是三种类型：元素节点、文档节点（document）和文档片段节点（documentfragment）。<code>parentElement</code>属性相当于把后两种父节点都排除了。</p>
+<h3 id="nodeprototypefirstchildnodeprototypelastchild">Node.prototype.firstChild，Node.prototype.lastChild<a class="headerlink" href="#nodeprototypefirstchildnodeprototypelastchild" title="Permanent link">&para;</a></h3>
+<p><code>firstChild</code>属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回<code>null</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;p id=&quot;p1&quot;&gt;&lt;span&gt;First span&lt;/span&gt;&lt;/p&gt;</span>
+<span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;p1&#39;</span><span class="p">);</span>
+<span class="nx">p1</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">nodeName</span> <span class="c1">// &quot;SPAN&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>p</code>元素的第一个子节点是<code>span</code>元素。</p>
+<p>注意，<code>firstChild</code>返回的除了元素节点，还可能是文本节点或注释节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;p id=&quot;p1&quot;&gt;</span>
+<span class="c1">//   &lt;span&gt;First span&lt;/span&gt;</span>
+<span class="c1">//  &lt;/p&gt;</span>
+<span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;p1&#39;</span><span class="p">);</span>
+<span class="nx">p1</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">nodeName</span> <span class="c1">// &quot;#text&quot;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>p</code>元素与<code>span</code>元素之间有空白字符，这导致<code>firstChild</code>返回的是文本节点。</p>
+<p><code>lastChild</code>属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回<code>null</code>。用法与<code>firstChild</code>属性相同。</p>
+<h3 id="nodeprototypechildnodes">Node.prototype.childNodes<a class="headerlink" href="#nodeprototypechildnodes" title="Permanent link">&para;</a></h3>
+<p><code>childNodes</code>属性返回一个类似数组的对象（<code>NodeList</code>集合），成员包括当前节点的所有子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">children</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">).</span><span class="nx">childNodes</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>children</code>就是<code>ul</code>元素的所有子节点。</p>
+<p>使用该属性，可以遍历某个节点的所有子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;div1&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">children</span> <span class="o">=</span> <span class="nx">div</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>文档节点（document）就有两个子节点：文档类型节点（docType）和 HTML 根元素节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">children</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">children</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 10</span>
+<span class="c1">// 1</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，文档节点的第一个子节点的类型是10（即文档类型节点），第二个子节点的类型是1（即元素节点）。</p>
+<p>注意，除了元素节点，<code>childNodes</code>属性的返回值还包括文本节点和注释节点。如果当前节点不包括任何子节点，则返回一个空的<code>NodeList</code>集合。由于<code>NodeList</code>对象是一个动态集合，一旦子节点发生变化，立刻会反映在返回结果之中。</p>
+<h3 id="nodeprototypeisconnected">Node.prototype.isConnected<a class="headerlink" href="#nodeprototypeisconnected" title="Permanent link">&para;</a></h3>
+<p><code>isConnected</code>属性返回一个布尔值，表示当前节点是否在文档之中。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">test</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="nx">test</span><span class="p">.</span><span class="nx">isConnected</span> <span class="c1">// false</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<span class="nx">test</span><span class="p">.</span><span class="nx">isConnected</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>test</code>节点是脚本生成的节点，没有插入文档之前，<code>isConnected</code>属性返回<code>false</code>，插入之后返回<code>true</code>。</p>
+<h2 id="_2">方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="nodeprototypeappendchild">Node.prototype.appendChild()<a class="headerlink" href="#nodeprototypeappendchild" title="Permanent link">&para;</a></h3>
+<p><code>appendChild()</code>方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。该方法的返回值就是插入文档的子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码新建一个<code>&lt;p&gt;</code>节点，将其插入<code>document.body</code>的尾部。</p>
+<p>如果参数节点是 DOM 已经存在的节点，<code>appendChild()</code>方法会将其从原来的位置，移动到新位置。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myDiv&#39;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">div</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，插入的是一个已经存在的节点<code>myDiv</code>，结果就是该节点会从原来的位置，移动到<code>document.body</code>的尾部。</p>
+<p>如果<code>appendChild()</code>方法的参数是<code>DocumentFragment</code>节点，那么插入的是<code>DocumentFragment</code>的所有子节点，而不是<code>DocumentFragment</code>节点本身。返回值是一个空的<code>DocumentFragment</code>节点。</p>
+<h3 id="nodeprototypehaschildnodes">Node.prototype.hasChildNodes()<a class="headerlink" href="#nodeprototypehaschildnodes" title="Permanent link">&para;</a></h3>
+<p><code>hasChildNodes</code>方法返回一个布尔值，表示当前节点是否有子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">hasChildNodes</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">foo</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码表示，如果<code>foo</code>节点有子节点，就移除第一个子节点。</p>
+<p>注意，子节点包括所有类型的节点，并不仅仅是元素节点。哪怕节点只包含一个空格，<code>hasChildNodes</code>方法也会返回<code>true</code>。</p>
+<p>判断一个节点有没有子节点，有许多种方法，下面是其中的三种。</p>
+<ul>
+<li><code>node.hasChildNodes()</code></li>
+<li><code>node.firstChild !== null</code></li>
+<li><code>node.childNodes &amp;&amp; node.childNodes.length &gt; 0</code></li>
+</ul>
+<p><code>hasChildNodes</code>方法结合<code>firstChild</code>属性和<code>nextSibling</code>属性，可以遍历当前节点的所有后代节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">DOMComb</span><span class="p">(</span><span class="nx">parent</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">.</span><span class="nx">hasChildNodes</span><span class="p">())</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">;</span> <span class="nx">node</span><span class="p">;</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">nextSibling</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">DOMComb</span><span class="p">(</span><span class="nx">node</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">callback</span><span class="p">(</span><span class="nx">parent</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 用法</span>
+<span class="nx">DOMComb</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>DOMComb</code>函数的第一个参数是某个指定的节点，第二个参数是回调函数。这个回调函数会依次作用于指定节点，以及指定节点的所有后代节点。</p>
+<h3 id="nodeprototypeclonenode">Node.prototype.cloneNode()<a class="headerlink" href="#nodeprototypeclonenode" title="Permanent link">&para;</a></h3>
+<p><code>cloneNode</code>方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点。它的返回值是一个克隆出来的新节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">cloneUL</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">).</span><span class="nx">cloneNode</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>该方法有一些使用注意点。</p>
+<p>（1）克隆一个节点，会拷贝该节点的所有属性，但是会丧失<code>addEventListener</code>方法和<code>on-</code>属性（即<code>node.onclick = fn</code>），添加在这个节点上的事件回调函数。</p>
+<p>（2）该方法返回的节点不在文档之中，即没有任何父节点，必须使用诸如<code>Node.appendChild</code>这样的方法添加到文档之中。</p>
+<p>（3）克隆一个节点之后，DOM 有可能出现两个有相同<code>id</code>属性（即<code>id="xxx"</code>）的网页元素，这时应该修改其中一个元素的<code>id</code>属性。如果原节点有<code>name</code>属性，可能也需要修改。</p>
+<h3 id="nodeprototypeinsertbefore">Node.prototype.insertBefore()<a class="headerlink" href="#nodeprototypeinsertbefore" title="Permanent link">&para;</a></h3>
+<p><code>insertBefore</code>方法用于将某个节点插入父节点内部的指定位置。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">insertedNode</span> <span class="o">=</span> <span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">newNode</span><span class="p">,</span> <span class="nx">referenceNode</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>insertBefore</code>方法接受两个参数，第一个参数是所要插入的节点<code>newNode</code>，第二个参数是父节点<code>parentNode</code>内部的一个子节点<code>referenceNode</code>。<code>newNode</code>将插在<code>referenceNode</code>这个子节点的前面。返回值是插入的新节点<code>newNode</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，新建一个<code>&lt;p&gt;</code>节点，插在<code>document.body.firstChild</code>的前面，也就是成为<code>document.body</code>的第一个子节点。</p>
+<p>如果<code>insertBefore</code>方法的第二个参数为<code>null</code>，则新节点将插在当前节点内部的最后位置，即变成最后一个子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>p</code>将成为<code>document.body</code>的最后一个子节点。这也说明<code>insertBefore</code>的第二个参数不能省略。</p>
+<p>注意，如果所要插入的节点是当前 DOM 现有的节点，则该节点将从原有的位置移除，插入新的位置。</p>
+<p>由于不存在<code>insertAfter</code>方法，如果新节点要插在父节点的某个子节点后面，可以用<code>insertBefore</code>方法结合<code>nextSibling</code>属性模拟。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">parent</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">.</span><span class="nx">nextSibling</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>parent</code>是父节点，<code>s1</code>是一个全新的节点，<code>s2</code>是可以将<code>s1</code>节点，插在<code>s2</code>节点的后面。如果<code>s2</code>是当前节点的最后一个子节点，则<code>s2.nextSibling</code>返回<code>null</code>，这时<code>s1</code>节点会插在当前节点的最后，变成当前节点的最后一个子节点，等于紧跟在<code>s2</code>的后面。</p>
+<p>如果要插入的节点是<code>DocumentFragment</code>类型，那么插入的将是<code>DocumentFragment</code>的所有子节点，而不是<code>DocumentFragment</code>节点本身。返回值将是一个空的<code>DocumentFragment</code>节点。</p>
+<h3 id="nodeprototyperemovechild">Node.prototype.removeChild()<a class="headerlink" href="#nodeprototyperemovechild" title="Permanent link">&para;</a></h3>
+<p><code>removeChild</code>方法接受一个子节点作为参数，用于从当前节点移除该子节点。返回值是移除的子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">divA</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">);</span>
+<span class="nx">divA</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">divA</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码移除了<code>divA</code>节点。注意，这个方法是在<code>divA</code>的父节点上调用的，不是在<code>divA</code>上调用的。</p>
+<p>下面是如何移除当前节点的所有子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">element</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>被移除的节点依然存在于内存之中，但不再是 DOM 的一部分。所以，一个节点移除以后，依然可以使用它，比如插入到另一个节点下面。</p>
+<p>如果参数节点不是当前节点的子节点，<code>removeChild</code>方法将报错。</p>
+<h3 id="nodeprototypereplacechild">Node.prototype.replaceChild()<a class="headerlink" href="#nodeprototypereplacechild" title="Permanent link">&para;</a></h3>
+<p><code>replaceChild</code>方法用于将一个新的节点，替换当前节点的某一个子节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">replacedNode</span> <span class="o">=</span> <span class="nx">parentNode</span><span class="p">.</span><span class="nx">replaceChild</span><span class="p">(</span><span class="nx">newChild</span><span class="p">,</span> <span class="nx">oldChild</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>replaceChild</code>方法接受两个参数，第一个参数<code>newChild</code>是用来替换的新节点，第二个参数<code>oldChild</code>是将要替换走的子节点。返回值是替换走的那个节点<code>oldChild</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">divA</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;divA&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">newSpan</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">);</span>
+<span class="nx">newSpan</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="s1">&#39;Hello World!&#39;</span><span class="p">;</span>
+<span class="nx">divA</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">replaceChild</span><span class="p">(</span><span class="nx">newSpan</span><span class="p">,</span> <span class="nx">divA</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码是如何将指定节点<code>divA</code>替换走。</p>
+<h3 id="nodeprototypecontains">Node.prototype.contains()<a class="headerlink" href="#nodeprototypecontains" title="Permanent link">&para;</a></h3>
+<p><code>contains</code>方法返回一个布尔值，表示参数节点是否满足以下三个条件之一。</p>
+<ul>
+<li>参数节点为当前节点。</li>
+<li>参数节点为当前节点的子节点。</li>
+<li>参数节点为当前节点的后代节点。</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码检查参数节点<code>node</code>，是否包含在当前文档之中。</p>
+<p>注意，当前节点传入<code>contains</code>方法，返回<code>true</code>。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">nodeA</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">nodeA</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="nodeprototypecomparedocumentposition">Node.prototype.compareDocumentPosition()<a class="headerlink" href="#nodeprototypecomparedocumentposition" title="Permanent link">&para;</a></h3>
+<p><code>compareDocumentPosition</code>方法的用法，与<code>contains</code>方法完全一致，返回一个六个比特位的二进制值，表示参数节点与当前节点的关系。</p>
+<table>
+<thead>
+<tr>
+<th>二进制值</th>
+<th>十进制值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000000</td>
+<td>0</td>
+<td>两个节点相同</td>
+</tr>
+<tr>
+<td>000001</td>
+<td>1</td>
+<td>两个节点不在同一个文档（即有一个节点不在当前文档）</td>
+</tr>
+<tr>
+<td>000010</td>
+<td>2</td>
+<td>参数节点在当前节点的前面</td>
+</tr>
+<tr>
+<td>000100</td>
+<td>4</td>
+<td>参数节点在当前节点的后面</td>
+</tr>
+<tr>
+<td>001000</td>
+<td>8</td>
+<td>参数节点包含当前节点</td>
+</tr>
+<tr>
+<td>010000</td>
+<td>16</td>
+<td>当前节点包含参数节点</td>
+</tr>
+<tr>
+<td>100000</td>
+<td>32</td>
+<td>浏览器内部使用</td>
+</tr>
+</tbody>
+</table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// HTML 代码如下</span>
+<span class="c1">// &lt;div id=&quot;mydiv&quot;&gt;</span>
+<span class="c1">//   &lt;form&gt;&lt;input id=&quot;test&quot; /&gt;&lt;/form&gt;</span>
+<span class="c1">// &lt;/div&gt;</span>
+
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;mydiv&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+
+<span class="nx">div</span><span class="p">.</span><span class="nx">compareDocumentPosition</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="c1">// 20</span>
+<span class="nx">input</span><span class="p">.</span><span class="nx">compareDocumentPosition</span><span class="p">(</span><span class="nx">div</span><span class="p">)</span> <span class="c1">// 10</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，节点<code>div</code>包含节点<code>input</code>（二进制<code>010000</code>），而且节点<code>input</code>在节点<code>div</code>的后面（二进制<code>000100</code>），所以第一个<code>compareDocumentPosition</code>方法返回<code>20</code>（二进制<code>010100</code>，即<code>010000 + 000100</code>），第二个<code>compareDocumentPosition</code>方法返回<code>10</code>（二进制<code>001010</code>）。</p>
+<p>由于<code>compareDocumentPosition</code>返回值的含义，定义在每一个比特位上，所以如果要检查某一种特定的含义，就需要使用比特位运算符。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">head</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">head</span><span class="p">.</span><span class="nx">compareDocumentPosition</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mf">4</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;文档结构正确&#39;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&lt;body&gt; 不能在 &lt;head&gt; 前面&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码中，<code>compareDocumentPosition</code>的返回值与<code>4</code>（又称掩码）进行与运算（<code>&amp;</code>），得到一个布尔值，表示<code>&lt;head&gt;</code>是否在<code>&lt;body&gt;</code>前面。</p>
+<h3 id="nodeprototypeisequalnodenodeprototypeissamenode">Node.prototype.isEqualNode()，Node.prototype.isSameNode()<a class="headerlink" href="#nodeprototypeisequalnodenodeprototypeissamenode" title="Permanent link">&para;</a></h3>
+<p><code>isEqualNode</code>方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">p2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+
+<span class="nx">p1</span><span class="p">.</span><span class="nx">isEqualNode</span><span class="p">(</span><span class="nx">p2</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p><code>isSameNode</code>方法返回一个布尔值，表示两个节点是否为同一个节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">p2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+
+<span class="nx">p1</span><span class="p">.</span><span class="nx">isSameNode</span><span class="p">(</span><span class="nx">p2</span><span class="p">)</span> <span class="c1">// false</span>
+<span class="nx">p1</span><span class="p">.</span><span class="nx">isSameNode</span><span class="p">(</span><span class="nx">p1</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="nodeprototypenormalize">Node.prototype.normalize()<a class="headerlink" href="#nodeprototypenormalize" title="Permanent link">&para;</a></h3>
+<p><code>normalize</code>方法用于清理当前节点内部的所有文本节点（text）。它会去除空的文本节点，并且将毗邻的文本节点合并成一个，也就是说不存在空的文本节点，以及毗邻的文本节点。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">wrapper</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span>
+
+<span class="nx">wrapper</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s1">&#39;Part 1 &#39;</span><span class="p">));</span>
+<span class="nx">wrapper</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s1">&#39;Part 2 &#39;</span><span class="p">));</span>
+
+<span class="nx">wrapper</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">length</span> <span class="c1">// 2</span>
+<span class="nx">wrapper</span><span class="p">.</span><span class="nx">normalize</span><span class="p">();</span>
+<span class="nx">wrapper</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">.</span><span class="nx">length</span> <span class="c1">// 1</span>
+</code></pre></div>
+</td></tr></table>
+<p>上面代码使用<code>normalize</code>方法之前，<code>wrapper</code>节点有两个毗邻的文本子节点。使用<code>normalize</code>方法之后，两个文本子节点被合并成一个。</p>
+<p>该方法是<code>Text.splitText</code>的逆方法，可以查看《Text 节点对象》一章，了解更多内容。</p>
+<h3 id="nodeprototypegetrootnode">Node.prototype.getRootNode()<a class="headerlink" href="#nodeprototypegetrootnode" title="Permanent link">&para;</a></h3>
+<p><code>getRootNode()</code>方法返回当前节点所在文档的根节点<code>document</code>，与<code>ownerDocument</code>属性的作用相同。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span>
+<span class="c1">// true</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">firstChild</span><span class="p">.</span><span class="nx">ownerDocument</span>
+<span class="c1">// true</span>
+</code></pre></div>
+</td></tr></table>
+<p>该方法可用于<code>document</code>节点自身，这一点与<code>document.ownerDocument</code>不同。</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="p">.</span><span class="nx">getRootNode</span><span class="p">()</span> <span class="c1">// document</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">ownerDocument</span> <span class="c1">// null</span>
+</code></pre></div>
+</td></tr></table>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../general/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 概述" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              概述
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../nodelist/" class="md-footer__link md-footer__link--next" aria-label="Next: NodeList 接口，HTMLCollection 接口" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              NodeList 接口，HTMLCollection 接口
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>
